@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<Layout title="ブログ — yuuniworks">
+  <main class="max-w-3xl mx-auto px-8 pb-20">
+
+    <section class="pt-14 pb-10">
+      <h1 class="font-mono text-[18px] uppercase tracking-widest text-accent mb-1">ブログ</h1>
+    </section>
+
+    <section>
+      <div class="divide-y divide-border">
+        {posts.map((post) => (
+          <a href={`/blog/${post.id}`} class="group flex flex-col gap-0.5 sm:flex-row sm:justify-between sm:items-baseline py-3">
+            <span class="text-ui text-content group-hover:text-accent transition-colors leading-relaxed flex-1">{post.data.title}</span>
+            <span class="font-mono text-small text-muted whitespace-nowrap order-first sm:order-last shrink-0">{post.data.date}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+  </main>
+</Layout>

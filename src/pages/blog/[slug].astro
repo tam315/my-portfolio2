@@ -1,0 +1,59 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+const currentIndex = allPosts.findIndex((p) => p.id === post.id);
+const prevPost = allPosts[currentIndex + 1] ?? null;
+const nextPost = allPosts[currentIndex - 1] ?? null;
+---
+
+<Layout title={`${post.data.title} — yuuniworks`}>
+  <main class="max-w-3xl mx-auto px-8 pb-20">
+    <article>
+
+      <header class="pt-hero pb-12 border-b border-border mb-12">
+        <p class="font-mono text-small text-muted tracking-wide mb-5">{post.data.date}</p>
+        <h1
+          class="font-sans font-normal text-strong leading-tight tracking-tight"
+          style="font-size: clamp(28px, 4.5vw, 48px);"
+        >
+          {post.data.title}
+        </h1>
+      </header>
+
+      <div class="blog-content prose prose-invert prose-headings:text-strong prose-p:text-content prose-li:text-content prose-strong:text-strong prose-a:text-content prose-a:underline prose-a:underline-offset-4 prose-a:decoration-muted prose-a:hover:text-accent prose-code:text-amber prose-code:bg-surface-3 prose-code:rounded prose-pre:bg-surface-2 prose-pre:border prose-pre:border-border prose-blockquote:border-l-accent prose-blockquote:text-muted">
+        <Content />
+      </div>
+
+      <nav class="mt-18 pt-8 border-t border-border flex flex-col gap-6 sm:flex-row sm:justify-between sm:items-start sm:gap-4">
+        {prevPost ? (
+          <a href={`/blog/${prevPost.id}`} class="text-small text-muted hover:text-accent transition-colors max-w-xs leading-relaxed">
+            <span class="block font-mono text-label tracking-widest mb-1">← PREV</span>
+            {prevPost.data.title}
+          </a>
+        ) : <span class="hidden sm:block" />}
+        {nextPost ? (
+          <a href={`/blog/${nextPost.id}`} class="text-small text-muted hover:text-accent transition-colors max-w-xs leading-relaxed sm:text-right">
+            <span class="block font-mono text-label tracking-widest mb-1">NEXT →</span>
+            {nextPost.data.title}
+          </a>
+        ) : <span class="hidden sm:block" />}
+      </nav>
+
+    </article>
+  </main>
+</Layout>

@@ -1,17 +1,128 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 
+const posts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+).slice(0, 10);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Shota Tamura — yuuniworks">
+  <main class="max-w-3xl mx-auto px-8 pb-20">
+
+    <!-- HERO -->
+    <section class="pt-14 pb-10">
+      <h1 class="font-sans font-light text-display text-strong mb-6">
+        Shota<br>Tamura
+      </h1>
+      <p class="text-ui text-muted max-w-sm leading-loose">
+        島根県浜田市在住の個人事業主です。<br>
+        Yuuniworksという商号で事業を行っています。<br>
+        ソフトウェア開発を生業としています。
+      </p>
+    </section>
+
+    <!-- 自社サービス -->
+    <section class="pt-8 pb-8">
+      <h2 class="font-mono text-[18px] uppercase tracking-widest text-accent mb-5">自社サービス等</h2>
+      <div class="flex flex-col gap-3">
+
+        <article>
+          <a href="https://goodmenu.io/" target="_blank" rel="noopener noreferrer" class="text-ui font-medium text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors">GoodMenu</a>
+          <p class="text-ui text-muted mt-1">飲食店のメニューを電子化するためのSaaS。年間ユーザーのべ20万人。</p>
+        </article>
+
+        <article>
+          <a href="https://www.npmjs.com/package/react-compare-image" target="_blank" rel="noopener noreferrer" class="text-ui font-medium text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors">React Compare Image</a>
+          <p class="text-ui text-muted mt-1">画像比較のためのReactライブラリ。年間150万回ダウンロード。</p>
+        </article>
+
+        <article>
+          <a href="https://pairwise.yuuniworks.com/" target="_blank" rel="noopener noreferrer" class="text-ui font-medium text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors">Pairwise Pict Online</a>
+          <p class="text-ui text-muted mt-1">ペアワイズテストケース生成ツール。年間ユーザーのべ3万人。</p>
+        </article>
+
+        <article>
+          <a href="https://durable-years.yuuniworks.com/" target="_blank" rel="noopener noreferrer" class="text-ui font-medium text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors">中古償却資産の耐用年数計算ツール</a>
+          <p class="text-ui text-muted mt-1">年間ユーザーのべ2万人。</p>
+        </article>
+
+        <article>
+          <a href="https://note.yuuniworks.com/about" target="_blank" rel="noopener noreferrer" class="text-ui font-medium text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors">Yuuniworks Note</a>
+          <p class="text-ui text-muted mt-1">日々の学びを綴っているノート。</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 経歴 -->
+    <section class="pt-8 pb-8">
+      <h2 class="font-mono text-[18px] uppercase tracking-widest text-accent mb-5">経歴</h2>
+      <div class="flex flex-col gap-3">
+
+        <div class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[180px_1fr] sm:gap-x-gap-col sm:items-baseline">
+          <span class="font-mono text-small text-muted tracking-wide">2008.04 — 2017.03</span>
+          <span class="text-ui text-content">公務員として地方自治体のIT管理者</span>
+        </div>
+
+        <div class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[180px_1fr] sm:gap-x-gap-col sm:items-baseline">
+          <span class="font-mono text-small text-muted tracking-wide">2018.12 — 2020.06</span>
+          <span class="text-ui text-content">株式会社Deepworkにてフルスタックエンジニア（業務委託契約）</span>
+        </div>
+
+        <div class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[180px_1fr] sm:gap-x-gap-col sm:items-baseline">
+          <span class="font-mono text-small text-muted tracking-wide">2021.08 — 2024.08</span>
+          <span class="text-ui text-content">株式会社カミナシにてフロントエンドエンジニア（業務委託契約）</span>
+        </div>
+
+        <div class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[180px_1fr] sm:gap-x-gap-col sm:items-baseline">
+          <span class="font-mono text-small text-muted tracking-wide">2020.07 — now</span>
+          <span class="text-ui text-content">
+            自社サービスである <a href="https://goodmenu.io/" target="_blank" rel="noopener noreferrer" class="text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors">Goodmenu.io</a> という飲食店向けSaaSの開発運営
+          </span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 連絡先 -->
+    <section class="pt-8 pb-8">
+      <h2 class="font-mono text-[18px] uppercase tracking-widest text-accent mb-5">連絡先</h2>
+      <div class="flex flex-col gap-4">
+
+        <div class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[160px_1fr] sm:gap-x-gap-col sm:items-baseline">
+          <span class="font-mono text-small text-muted tracking-wide">Email</span>
+          <a href="mailto:info@yuuniworks.com" class="text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors">info@yuuniworks.com</a>
+        </div>
+
+        <div class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[160px_1fr] sm:gap-x-gap-col sm:items-baseline">
+          <span class="font-mono text-small text-muted tracking-wide">GitHub</span>
+          <a href="https://github.com/tam315" target="_blank" rel="noopener noreferrer" class="text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors">tam315</a>
+        </div>
+
+        <div class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[160px_1fr] sm:gap-x-gap-col sm:items-baseline">
+          <span class="font-mono text-small text-muted tracking-wide">インボイス登録番号</span>
+          <a href="https://www.invoice-kohyo.nta.go.jp/regno-search/detail?selRegNo=6810092734887" target="_blank" rel="noopener noreferrer" class="font-mono text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors">T6810092734887</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ブログ -->
+    <section class="pt-8 pb-8" id="blog">
+      <h2 class="font-mono text-[18px] uppercase tracking-widest text-accent mb-5">ブログ</h2>
+      <div class="divide-y divide-border">
+        {posts.map((post) => (
+          <a href={`/blog/${post.id}`} class="group flex flex-col gap-0.5 sm:flex-row sm:justify-between sm:items-baseline py-3">
+            <span class="text-ui text-content group-hover:text-accent transition-colors leading-relaxed flex-1">{post.data.title}</span>
+            <span class="font-mono text-small text-muted whitespace-nowrap order-first sm:order-last shrink-0">{post.data.date}</span>
+          </a>
+        ))}
+      </div>
+      <div class="mt-4">
+        <a href="/blog" class="font-mono text-small text-muted hover:text-accent transition-colors">すべて見る →</a>
+      </div>
+    </section>
+
+  </main>
+</Layout>

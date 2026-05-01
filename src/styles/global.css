@@ -1,0 +1,56 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Colors */
+  --color-surface:   #16181e; /* 背景 */
+  --color-border:    #2a2d38; /* 罫線 */
+  --color-content:   #e2e4eb;  /* 本文 */
+  --color-muted:     #777d8c; /* サブ文字 */
+  --color-strong:    #f0f2f7; /* h1h2h3など */
+  --color-accent:    oklch(0.75 0.16 230); /* セクションタイトルの色 */
+  --color-amber:     oklch(0.72 0.13 50); /* インラインコードの色 */
+
+  /* Font families */
+  --font-sans: "IBM Plex Sans JP", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  /* Font sizes */
+  --text-small:   14px;
+  --text-ui:      16px;
+
+  /* Hero */
+  --text-display: clamp(52px, 9vw, 84px);
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.02em;
+
+  /* Spacing */
+  --spacing-hero:    72px;
+  --spacing-gap-col: 16px;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+/* Nav underline animation */
+.nav-underline::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 0;
+  background: oklch(0.75 0.16 230);
+  transition: width 0.25s;
+  margin-top: 3px;
+}
+.nav-underline:hover::after,
+.nav-underline.active::after {
+  width: 100%;
+}
+
+/* 画像下のキャプション文字 */
+.blog-content p:has(> img:only-child) + p {
+  margin-top: -1.5rem;
+  color: var(--color-muted);
+  font-size: var(--text-small);
+}
