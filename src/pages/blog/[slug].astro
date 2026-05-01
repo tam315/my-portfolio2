@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import 'medium-zoom/dist/style.css';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -57,3 +58,8 @@ const nextPost = allPosts[currentIndex - 1] ?? null;
     </article>
   </main>
 </Layout>
+
+<script>
+  import mediumZoom from 'medium-zoom';
+  mediumZoom('.blog-content img', { background: 'rgba(0, 0, 0, 0.85)' });
+</script>
