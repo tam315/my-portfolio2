@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
-).slice(0, 10);
+).slice(0, 5);
 ---
 
 <Layout title="Shota Tamura — yuuniworks">
@@ -29,27 +29,27 @@ const posts = (await getCollection('blog')).sort(
 
         <article>
           <a href="https://goodmenu.io/" target="_blank" rel="noopener noreferrer" class="text-ui font-medium text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors">GoodMenu</a>
-          <p class="text-ui text-muted mt-1">飲食店のメニューを電子化するためのSaaS。年間ユーザーのべ20万人。</p>
+          <p class="text-ui text-muted mt-2">飲食店のメニューを電子化するためのSaaS。年間ユーザーのべ20万人。</p>
         </article>
 
         <article>
           <a href="https://www.npmjs.com/package/react-compare-image" target="_blank" rel="noopener noreferrer" class="text-ui font-medium text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors">React Compare Image</a>
-          <p class="text-ui text-muted mt-1">画像比較のためのReactライブラリ。年間150万回ダウンロード。</p>
+          <p class="text-ui text-muted mt-2">画像比較のためのReactライブラリ。年間150万回ダウンロード。</p>
         </article>
 
         <article>
           <a href="https://pairwise.yuuniworks.com/" target="_blank" rel="noopener noreferrer" class="text-ui font-medium text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors">Pairwise Pict Online</a>
-          <p class="text-ui text-muted mt-1">ペアワイズテストケース生成ツール。年間ユーザーのべ3万人。</p>
+          <p class="text-ui text-muted mt-2">ペアワイズテストケース生成ツール。年間ユーザーのべ3万人。</p>
         </article>
 
         <article>
           <a href="https://durable-years.yuuniworks.com/" target="_blank" rel="noopener noreferrer" class="text-ui font-medium text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors">中古償却資産の耐用年数計算ツール</a>
-          <p class="text-ui text-muted mt-1">年間ユーザーのべ2万人。</p>
+          <p class="text-ui text-muted mt-2">年間ユーザーのべ2万人。</p>
         </article>
 
         <article>
           <a href="https://note.yuuniworks.com/about" target="_blank" rel="noopener noreferrer" class="text-ui font-medium text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors">Yuuniworks Note</a>
-          <p class="text-ui text-muted mt-1">日々の学びを綴っているノート。</p>
+          <p class="text-ui text-muted mt-2">日々の学びを綴っているノート。</p>
         </article>
 
       </div>
