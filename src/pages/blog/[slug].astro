@@ -21,7 +21,7 @@ const prevPost = allPosts[currentIndex + 1] ?? null;
 const nextPost = allPosts[currentIndex - 1] ?? null;
 ---
 
-<Layout title={`${post.data.title} — yuuniworks`}>
+<Layout title={post.data.title} description={post.data.description}>
   <main class="max-w-3xl mx-auto px-8 pb-20">
     <article>
 
