@@ -26,7 +26,8 @@ const isBlog = pathname.startsWith('/blog');
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{fullTitle}</title>
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
     <link rel="canonical" href={canonicalURL} />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
