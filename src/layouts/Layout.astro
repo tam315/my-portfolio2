@@ -1,11 +1,19 @@
 ---
 import '../styles/global.css';
+import { SITE_DESCRIPTION } from '../consts';
+import {SITE_TITLE} from "../consts.ts";
 
 interface Props {
-  title?: string;
+  title: string;
+  description?: string;
 }
 
-const { title = 'Shota Tamura — yuuniworks' } = Astro.props;
+const { title, description = SITE_DESCRIPTION } = Astro.props;
+
+const fullTitle = `${title} | Yuuniworks`;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL('/og-image.png', Astro.site);
 
 const pathname = Astro.url.pathname;
 const isAbout = pathname === '/';
@@ -16,9 +24,30 @@ const isBlog = pathname.startsWith('/blog');
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{fullTitle}</title>
     <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+
+    <!-- Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_TITLE} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:alt" content={SITE_TITLE} />
+    <meta property="og:locale" content="ja_JP" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content={SITE_TITLE} />
+      
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

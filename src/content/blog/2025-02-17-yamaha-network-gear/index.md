@@ -7,11 +7,11 @@ date: "2025-02-17"
 
 ![そのへんの棚に雑然と放り込まれてもプロフェッショナルな光を放つRTX830](./image-1.jpg)
 
-そのへんの棚に雑然と放り込まれてもプロフェッショナルな光を放つRTX830
+↑そのへんの棚に雑然と放り込まれてもプロフェッショナルな光を放つRTX830
 
 ![WLX323 access point](./image-2.jpg)
 
-廊下の天井付近に設置されたWLX323の図（背後のはただの換気扇）。ときに、この[2x4材でなんでも作れるやつ](https://www.amazon.co.jp/%E5%B9%B3%E5%AE%89%E4%BC%B8%E9%8A%85%E5%B7%A5%E6%A5%AD-DIY%E5%8F%8E%E7%B4%8D%E3%83%91%E3%83%BC%E3%83%84-2%C3%974%E3%82%A2%E3%82%B8%E3%83%A3%E3%82%B9%E3%82%BF%E3%83%BC%E5%BC%B7%E5%8A%9B%E3%82%BF%E3%82%A4%E3%83%97-EXO-1-%E6%9C%80%E5%A4%A7%E4%BD%BF%E7%94%A8%E8%8D%B7%E9%87%8D40kg/dp/B083WKG6JH/ref=sr_1_1_sspa?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=119A9B1PX82T8&dib=eyJ2IjoiMSJ9.k8_YfmMU1ByhZ410M_o8gIN2bgS9umqmLoG8NQgt9uHLAzNNqBjuM5zW-XRtzlk-9aL-vcih09OFaUnAQwTUm5a5pOpwDL1rBO0U0Vc6N74xVCng8nXpcP664Bxn7qhC7yDiTErW2eBvSTMA0C8QKVtV-eSaiz57pTYEHsHsd8yVsxOhqvVdSHupXtb4Wiqzs91QPidav5-GGk-dqvKXH3zSD0KLn_WfZhizfH4m9_kWt8YXS5usgAX5Ymn9iO9-S0OIaGIgucwaLSVkGVwmLQww8t6WGJqJtD8935AgXEw.sydBBr4d7KLAtqDBX9f-BLi2sBSm4nTkeNe1MW6XXxs&dib_tag=se&keywords=2x4&qid=1740977783&sprefix=2x4%2Caps%2C174&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1)ほんとベンリーノ。
+↑廊下の天井付近に設置されたWLX323の図（背後のはただの換気扇）。ときに、この[2x4材でなんでも作れるやつ](https://www.amazon.co.jp/%E5%B9%B3%E5%AE%89%E4%BC%B8%E9%8A%85%E5%B7%A5%E6%A5%AD-DIY%E5%8F%8E%E7%B4%8D%E3%83%91%E3%83%BC%E3%83%84-2%C3%974%E3%82%A2%E3%82%B8%E3%83%A3%E3%82%B9%E3%82%BF%E3%83%BC%E5%BC%B7%E5%8A%9B%E3%82%BF%E3%82%A4%E3%83%97-EXO-1-%E6%9C%80%E5%A4%A7%E4%BD%BF%E7%94%A8%E8%8D%B7%E9%87%8D40kg/dp/B083WKG6JH/ref=sr_1_1_sspa?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=119A9B1PX82T8&dib=eyJ2IjoiMSJ9.k8_YfmMU1ByhZ410M_o8gIN2bgS9umqmLoG8NQgt9uHLAzNNqBjuM5zW-XRtzlk-9aL-vcih09OFaUnAQwTUm5a5pOpwDL1rBO0U0Vc6N74xVCng8nXpcP664Bxn7qhC7yDiTErW2eBvSTMA0C8QKVtV-eSaiz57pTYEHsHsd8yVsxOhqvVdSHupXtb4Wiqzs91QPidav5-GGk-dqvKXH3zSD0KLn_WfZhizfH4m9_kWt8YXS5usgAX5Ymn9iO9-S0OIaGIgucwaLSVkGVwmLQww8t6WGJqJtD8935AgXEw.sydBBr4d7KLAtqDBX9f-BLi2sBSm4nTkeNe1MW6XXxs&dib_tag=se&keywords=2x4&qid=1740977783&sprefix=2x4%2Caps%2C174&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1)ほんとベンリーノ。
 
 # 初期IPなど
 
