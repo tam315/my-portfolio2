@@ -14,8 +14,8 @@
 
 <script>
   function syncIcons(theme: string) {
-    document.getElementById('icon-sun')?.classList.toggle('hidden', theme !== 'dark');
-    document.getElementById('icon-moon')?.classList.toggle('hidden', theme === 'dark');
+    document.getElementById('icon-sun')?.classList.toggle('hidden', theme === 'dark');
+    document.getElementById('icon-moon')?.classList.toggle('hidden', theme === 'light');
   }
 
   syncIcons(document.documentElement.getAttribute('data-theme')!);
