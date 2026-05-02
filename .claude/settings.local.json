@@ -6,7 +6,8 @@
       "Bash(curl -sv http://localhost:4321/)",
       "Bash(curl -s \"http://localhost:4321/src/styles/global.css\")",
       "Bash(npm install *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "WebFetch(domain:docs.astro.build)"
     ]
   }
 }
