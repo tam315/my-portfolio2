@@ -1,7 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import 'medium-zoom/dist/style.css';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -60,6 +59,23 @@ const nextPost = allPosts[currentIndex - 1] ?? null;
 </Layout>
 
 <script>
-  import mediumZoom from 'medium-zoom';
-  mediumZoom('.blog-content img', { background: 'rgba(0, 0, 0, 0.85)' });
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+  import 'photoswipe/style.css';
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '.blog-content',
+    children: 'img',
+    pswpModule: () => import('photoswipe'),
+    bgOpacity: 0.85,
+  });
+
+  lightbox.on('itemData', (e) => {
+    const img = e.itemData.element as HTMLImageElement;
+    e.itemData.src = img.currentSrc || img.src;
+    e.itemData.width = img.naturalWidth || img.width;
+    e.itemData.height = img.naturalHeight || img.height;
+    e.itemData.msrc = img.currentSrc || img.src;
+  });
+
+  lightbox.init();
 </script>
