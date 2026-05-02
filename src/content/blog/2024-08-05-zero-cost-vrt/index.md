@@ -138,7 +138,7 @@ Playwrightを実行する後段で以下のアクションを走らせるだけ�
 
 ![ActionsのSecretとDependabotのSecretは、別々に管理できるようになっている](./image-1.png)
 
-ActionsのSecretとDependabotのSecretは、別々に管理できるようになっている
+↑ActionsのSecretとDependabotのSecretは、別々に管理できるようになっている
 
 ## 結果
 
@@ -146,7 +146,7 @@ ActionsのSecretとDependabotのSecretは、別々に管理できるようにな
 
 ![承認画面の例](./image-2.png)
 
-承認画面の例
+↑承認画面の例
 
 ベースライン画像は、祖先のコミットにおける承認履歴を勘案しつつ、最も適切なものが自動でピックアップされる。
 

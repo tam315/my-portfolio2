@@ -17,7 +17,6 @@
 
   /* Font sizes */
   --text-small:   14px;
-  --text-ui:      16px;
 
   /* Hero */
   --text-display: clamp(52px, 9vw, 84px);
@@ -46,11 +45,4 @@ html {
 .nav-underline:hover::after,
 .nav-underline.active::after {
   width: 100%;
-}
-
-/* 画像下のキャプション文字 */
-.blog-content p:has(> img:only-child) + p {
-  margin-top: -1.5rem;
-  color: var(--color-muted);
-  font-size: var(--text-small);
 }
