@@ -11,6 +11,11 @@ export default defineConfig({
   site: 'https://www.yuuniworks.com',
   integrations: [react(), sitemap()],
 
+  image: {
+    layout: 'constrained',
+    responsiveStyles: true,
+  },
+
   vite: {
     plugins: [tailwindcss()]
   }
