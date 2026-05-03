@@ -24,7 +24,7 @@ const posts = (await getCollection('blog')).sort(
     <section class="pt-8 pb-8">
       <h2 class="font-mono text-[18px] uppercase tracking-widest text-accent mb-5">事業内容</h2>
       <p class="text-ui text-content leading-relaxed">
-      各種Webサービスの開発・運営を行っています。「こんなものを作りたい」を形にします。お気軽にお問い合わせください。
+      システム開発、Webサイト制作、技術相談などを行っています。「こんなものを作りたい」を形にします。お気軽に<a href="https://forms.gle/sRwBJKLjH97yXRt87" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4 decoration-muted">お問い合わせ</a>ください。
       </p>
     </section>
 
@@ -95,6 +95,11 @@ const posts = (await getCollection('blog')).sort(
     <section class="pt-8 pb-8">
       <h2 class="font-mono text-[18px] uppercase tracking-widest text-accent mb-5">連絡先</h2>
       <div class="flex flex-col gap-4">
+
+        <div class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[160px_1fr] sm:gap-x-gap-col sm:items-baseline">
+          <span class="font-mono text-small text-muted tracking-wide">問い合わせフォーム</span>
+          <a href="https://forms.gle/sRwBJKLjH97yXRt87" target="_blank" rel="noopener noreferrer" class="text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors">お問い合わせはこちらをクリック</a>
+        </div>
 
         <div class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[160px_1fr] sm:gap-x-gap-col sm:items-baseline">
           <span class="font-mono text-small text-muted tracking-wide">Email</span>
