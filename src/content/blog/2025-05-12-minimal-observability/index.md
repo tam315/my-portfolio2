@@ -147,7 +147,7 @@ CMD ["npm", "run", "start"]
 
 まこと、便利な世の中になったものよのう、と思った次第である。
 
-# 追記1. フロントエンドまで手をひろげる
+## 追記1. フロントエンドまで手をひろげる
 
 どうせならフロントエンドまで通貫で見たいよなーと思ったところ、[Grafana Faro](https://grafana.com/oss/faro/)を使えばとりあえず実現できた。
 
@@ -216,7 +216,7 @@ export const FrontendObservability = () => {
 
 ↑トレース詳細画面（フロントエンドからDBクエリまで全部見える、、、見えるぞ！の図）
 
-# 追記2.  Cloud RunでOpenTelemetryを使うとデータが欠損する問題
+## 追記2.  Cloud RunでOpenTelemetryを使うとデータが欠損する問題
 
 Cloud RunからGrafanaにOtelで連携したときに、かなりの量のトレースデータが欠損していることに気づいたので調査してみた。調査の結果、Cloud Run側がOtelに干渉するというイケてない仕様になっているのが原因らしい。
 

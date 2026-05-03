@@ -9,7 +9,7 @@ Domain Modeling Made Functional (邦題: 関数型ドメインモデリング) �
 
 以下、雑多な感想文など。
 
-# 新しい発見
+## 新しい発見
 
 - ビジネスにおいては、データを「変換」する過程にこそ価値がある。静止した「状態」のデータには価値がない。
 - **Algebraic Types System** (代数的データ型)とは、stringやnumberといったプリミティブな型を起点として、Product Types (直積型 / AND) と Sum Types (直和型 / OR) を駆使してあらゆる型を組み上げていく仕組みのこと
@@ -34,7 +34,7 @@ type ValidateOrder =
 - 複雑な判定をする類のロジックは[Active Pattern](https://note.yuuniworks.com/books/domain-modeling-made-functional#active-pattern%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%83%AD%E3%82%B8%E3%83%83%E3%82%AF%E3%82%92%E7%B0%A1%E7%B4%A0%E5%8C%96%E3%81%99%E3%82%8B)を使うことで保守性・可読性・堅牢性を向上させられる
 - ビジネスルールのの**出力**(e.g. 送料無料)だけをモデル化してはダメ。ルールへの**入力**(`isVipUser`)をモデル化し、それをもとに算定をして、出力せよ。
 
-# 感想・疑問点など
+## 感想・疑問点など
 
 - TypeScriptにはmatch**式**やResult型、result構文がない中で、どの程度関数型プログラミングを効率的に書けるのか
     - `Result`型はneverthrowあたりを活用すればなんとかなりそう
