@@ -5,7 +5,7 @@ date: "2025-12-17"
 
 ドメインまわりの管理については、永らく [Namecheap](https://www.namecheap.com/) と [Route53](https://aws.amazon.com/jp/route53/) にお世話になってきたのだが、そろそろCloudflare教に入信しておかないと来世でひどい目に合うという噂を耳にしたため、レジストラ・DNSともにCloudflareに集約してみた。
 
-# DNSの移行
+## DNSの移行
 
 まずはDNSをRoute53からCloudflareに移行した。なお、Route53はゾーンファイルをサクッと書き出せないため、[cli53](https://github.com/barnybug/cli53)というOSSを使ってゴニョゴニョして書き出したのち、Cloudflare側でインポートする必要がある。その後、レジストラであるNapecheapで移行ドメインのネームサーバーをCloudflareに切り替えたら完了。
 
@@ -17,13 +17,13 @@ DNSレコードの設定画面はこんな感じ。
 
 Proxyってのが最初はどんな機能か分からなかったのだが、ようはリバースプロキシらしい。解決先のIPをCloudflareのリバプロサーバのIPに置き換えて、本来の解決先を隠すことができるみたい。さらにセキュリティやパフォーマンスの改善を[いい感じにやってくれる](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-reverse-proxy)ようだ。へぇー、便利。CNAMEレコードに追加しても大した意味はないだろうが、なんとなく有効にしておいた。
 
-# レジストラの移行
+## レジストラの移行
 
 NamecheapからCloudflareへのレジストラの移行も、UIの指示通りに行うだけで小一時間で完了した（ただし、かの悪名高いお◯◯ドット◯◯からの移管が同じようにスムーズに行くかどうかは不明ですのでご自愛ください）。ドメインの利用料がNamecheapより1割くらい安くなってうれしい。噂によると原価で売ってるらしい。強すぎる。
 
 ![スクリーンショット 2025-12-17 13.48.58.png](./image-2.png)
 
-# 所感
+## 所感
 
 ドメイン管理をCloudflareに集約したことで得られたわかりやすい恩恵としては、Cloudflare Workersで立ち上げたサイトに対してカスタムドメインを割り当てる際に、DNSレコードを自動でよしなにいじってくれるようになったことだ(編集不可の特殊なレコードが自動でセットされる)。これは楽だ。
 

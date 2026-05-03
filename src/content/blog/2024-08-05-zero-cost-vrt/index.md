@@ -5,11 +5,11 @@ date: "2024-08-05"
 
 個人プロジェクトでVRTの仕組みを整える機会があったのでメモ。
 
-# 作戦1: Playwright + Git LFSのパターン
+## 作戦1: Playwright + Git LFSのパターン
 
 まずはPlaywrightの[`toHaveScreenshot()`](https://playwright.dev/docs/api/class-pageassertions#page-assertions-to-have-screenshot-1)だけを活用してVRTができるか挑戦してみた。`toHaveScreenshot()`を活用する場合、原則としてgitリポジトリにベースライン画像と呼ばれる正とされる画像をコミットする必要がある。素朴に画像をコミットするとリポジトリが肥大化するため、Git LFSを併用することとした。
 
-## Git LFSの設定
+### Git LFSの設定
 
 インストール
 
@@ -37,7 +37,7 @@ git lfs track
 git lfs ls-files
 ```
 
-## Playwrightの設定
+### Playwrightの設定
 
 スナップショットファイルの書き出し先をPlaywrightの設定ファイルに書いておく。デフォルトだとプラットフォーム名(darwin,linux)などがファイル名の末尾に入ってしまい、Mac上で生成したベースライン画像ファイル名と差異が出ることで、CIが失敗するため。
 
@@ -45,7 +45,7 @@ git lfs ls-files
 snapshotPathTemplate: 'tests/snapshots/{testFileName}/{arg}{ext}'
 ```
 
-## GitHub Actionsの設定
+### GitHub Actionsの設定
 
 Git LFSをGithub Actionsで利用する場合は、以下のようにcheckoutする必要がある。このため、Playwrightを実行しているActionsに以下を記載しておく。
 
@@ -57,18 +57,18 @@ Git LFSをGithub Actionsで利用する場合は、以下のようにcheckoutす
 
 上記以外の設定は、Playwrightが生成するデフォルトの設定などに沿った。
 
-## 結果
+### 結果
 
 作戦1を試した結果、いくつか問題があった。
 
 - Git LFSの仕組み上、一度コミットした画像は事実上、永遠に消せない。VRTの画像はPRレビュー時にのみ必要なものであり、マージ後は不要になる。不要な画像に生涯お金を払い続けるのは、辛い。
 - MacとCIの実行環境による差分を解消できなかった。全く同じコンテナを使ってDocker上で画像を生成することも試してみたが、フォントのレンダリングや隙間に微妙な差異が発生してしまい、お手上げだった。
 
-# 作戦2: Lost Pixelを使う
+## 作戦2: Lost Pixelを使う
 
 新進気鋭の[Lost Pixel](https://www.lost-pixel.com/)というサービスがニーズに合っていそうなので試してみた。
 
-## Playwrightの設定
+### Playwrightの設定
 
 テスト実行時には、`page.toHaveScreenshot()`を使って指定したフォルダに画像を生成する。以下のようなutilを作っておくと便利。
 
@@ -98,7 +98,7 @@ snapshotPathTemplate:
 
 このようにすることで、Playwright自体は単にスナップショット画像を生成する責務だけに専念し、画像比較や承認の責務はLost Pixelに丸投げすることができる。なお、`page.screenshot()`という関数もあるが、こちらは諸々の機能が劣るので素直に`page.toHaveScreenshot()`を使ったほうが便利。
 
-## Lost Pixelの設定
+### Lost Pixelの設定
 
 まずはコンフィグファイルの生成と、必要なライブラリをインストールする。
 
@@ -123,7 +123,7 @@ export const config: CustomProjectConfig = {
 };
 ```
 
-## Github Actionsの設定
+### Github Actionsの設定
 
 Playwrightを実行する後段で以下のアクションを走らせるだけ。
 
@@ -140,7 +140,7 @@ Playwrightを実行する後段で以下のアクションを走らせるだけ�
 
 ↑ActionsのSecretとDependabotのSecretは、別々に管理できるようになっている
 
-## 結果
+### 結果
 
 これだけで、VRTの差分確認から承認までを一気通貫して行えるプラットフォームが用意される。
 

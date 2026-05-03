@@ -13,7 +13,7 @@ date: "2025-02-17"
 
 ↑廊下の天井付近に設置されたWLX323の図（背後のはただの換気扇）。ときに、この[2x4材でなんでも作れるやつ](https://www.amazon.co.jp/%E5%B9%B3%E5%AE%89%E4%BC%B8%E9%8A%85%E5%B7%A5%E6%A5%AD-DIY%E5%8F%8E%E7%B4%8D%E3%83%91%E3%83%BC%E3%83%84-2%C3%974%E3%82%A2%E3%82%B8%E3%83%A3%E3%82%B9%E3%82%BF%E3%83%BC%E5%BC%B7%E5%8A%9B%E3%82%BF%E3%82%A4%E3%83%97-EXO-1-%E6%9C%80%E5%A4%A7%E4%BD%BF%E7%94%A8%E8%8D%B7%E9%87%8D40kg/dp/B083WKG6JH/ref=sr_1_1_sspa?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=119A9B1PX82T8&dib=eyJ2IjoiMSJ9.k8_YfmMU1ByhZ410M_o8gIN2bgS9umqmLoG8NQgt9uHLAzNNqBjuM5zW-XRtzlk-9aL-vcih09OFaUnAQwTUm5a5pOpwDL1rBO0U0Vc6N74xVCng8nXpcP664Bxn7qhC7yDiTErW2eBvSTMA0C8QKVtV-eSaiz57pTYEHsHsd8yVsxOhqvVdSHupXtb4Wiqzs91QPidav5-GGk-dqvKXH3zSD0KLn_WfZhizfH4m9_kWt8YXS5usgAX5Ymn9iO9-S0OIaGIgucwaLSVkGVwmLQww8t6WGJqJtD8935AgXEw.sydBBr4d7KLAtqDBX9f-BLi2sBSm4nTkeNe1MW6XXxs&dib_tag=se&keywords=2x4&qid=1740977783&sprefix=2x4%2Caps%2C174&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1)ほんとベンリーノ。
 
-# 初期IPなど
+## 初期IPなど
 
 ルーターの初期IPは192.168.100.1
 
@@ -21,7 +21,7 @@ date: "2025-02-17"
 
 無線APのIPはDHCP
 
-# まずはルーターにSerial(USB)で接続
+## まずはルーターにSerial(USB)で接続
 
 シリアルで繋げられる環境を整えておくとトラブル時にも安心なので、初めにやる。RTX830はUSB接続での接続が可能。Macでも問題なく動作する。
 
@@ -47,7 +47,7 @@ screenコマンドを使って、シリアル通信を行う。
 
 終了するには`ctrl + a, k`を押す。
 
-# 設定の基本作法
+## 設定の基本作法
 
 コンソールに何らかの方法で接続したのち
 
@@ -59,7 +59,7 @@ screenコマンドを使って、シリアル通信を行う。
 % quit
 ```
 
-# 文字コードの設定
+## 文字コードの設定
 
 macのscreenコマンドで繋ぐと文字化けするので、sjisからutf8に変更しておく。
 
@@ -67,14 +67,14 @@ macのscreenコマンドで繋ぐと文字化けするので、sjisからutf8に
 console character ja.utf8
 ```
 
-# パスワードの設定
+## パスワードの設定
 
 ```bash
 login password # ログインパスワードをプロンプトで設定する
 administrator password # 管理者パスワードをプロンプトで設定する
 ```
 
-# SSHの有効化
+## SSHの有効化
 
 毎回USBで繋ぐのは面倒なのでSSHで繋げるようにしておく。
 
@@ -90,7 +90,7 @@ administrator password # 管理者パスワードをプロンプトで設定す�
 
 [https://www.rtpro.yamaha.co.jp/RT/manual/rt-common/howtouse/ssh_server.html](https://www.rtpro.yamaha.co.jp/RT/manual/rt-common/howtouse/ssh_server.html)
 
-# Telnetの無効化
+## Telnetの無効化
 
 SSHの環境を整えた暁には、危険なTelnetさんを抹殺しておく。
 
@@ -99,13 +99,13 @@ telnetd service off # telnetサービスを起動しない
 no telnet host # 接続元の制限を削除
 ```
 
-# WANの設定
+## WANの設定
 
 流石に煩雑なのでGUIで行った。といってもWAN側は単純なDHCPである。
 
 ![スクリーンショット 2025-02-17 13.02.17.png](./image-3.png)
 
-# セキュリティ設定
+## セキュリティ設定
 
 WAN側との入出力に関するルーティング設定についてはWAN設定の際に自動で設定されるが、少しだけ手直しした。WAN側のプライベートアドレスへのアクセスやその逆を完全に禁じるなど。これもGUIから設定可能。
 
@@ -152,7 +152,7 @@ WAN側との入出力に関するルーティング設定についてはWAN設�
     ```
     
 
-# DHCPの動作モードを調整
+## DHCPの動作モードを調整
 
 `dhcp server rfc2131 compliant except remain-silent` という初期設定が入っているが、トラブルになる場合もあるらしいので消しておく。RFC2131の標準動作になるだけなので、問題ないはず。
 
@@ -168,7 +168,7 @@ https://qiita.com/hoto17296/items/7f1e7783f703904248de
 dhcp server rfc2131 compliant except use-clientid
 ```
 
-# 無線APのSSID構成
+## 無線APのSSID構成
 
 YAMAHAの無線APにはVirtual Access Point (VIP)という機能があり、最大16個のSSIDを任意の設定で作ることができる。SSIDの設計にあたり求めた要件は以下のとおり。
 
@@ -189,7 +189,7 @@ YAMAHAの無線APにはVirtual Access Point (VIP)という機能があり、最�
 4. **2.4GHz × WPA2** Mix Mode
     - Mix Modeだと正常に動作しない💩端末が一台だけあり、それ専用のSSID。早々に無くしたい。
 
-# メール通知の有効化
+## メール通知の有効化
 
 YAMAHAのルーターにはL2MSという機器監視の仕組みがあり、異常発生時にはメールで通知することもできる。Amazon SESと連携して通知する仕組みにした。
 
@@ -197,7 +197,7 @@ YAMAHAのルーターにはL2MSという機器監視の仕組みがあり、異�
 
 ![スクリーンショット 2025-02-17 12.53.40.png](./image-4.png)
 
-# わかったこと
+## わかったこと
 
 - 5GHz帯と比べると、6GHz帯は本当に電波が飛ばない。安定して使うには同じ部屋の内での利用が限界で、二階建て一軒家を1台のAPでカバーしようとしてもうまくいかない。とくにスマートフォンはノートPCと比べて電波感度が弱く、5GHzで繋いだほうがマシという状況が発生する。
 - YAMAHA独自のローミング機能をオンにしていると電波が弱くなったときに自動でバスバス接続をAP側から切られるので、無効化した。一軒家だとほぼすべての部屋がAPと壁越しのアクセスになり、そんなに電波は強くないため。
