@@ -1,13 +1,13 @@
 ---
 import '../styles/global.css';
-import { SITE_DESCRIPTION } from '../consts';
-import {SITE_TITLE} from "../consts.ts";
 import ThemeToggle from '../components/ThemeToggle.astro';
 
 interface Props {
   title: string;
   description?: string;
 }
+
+export const SITE_DESCRIPTION = 'システム開発、Webサイト制作、技術相談などを行っています。「こんなものを作りたい」を形にします。お気軽にお問い合わせください。';
 
 const { title, description = SITE_DESCRIPTION } = Astro.props;
 
@@ -34,12 +34,12 @@ const isBlog = pathname.startsWith('/blog');
 
     <!-- Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content={SITE_TITLE} />
+    <meta property="og:site_name" content={fullTitle} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageURL} />
-    <meta property="og:image:alt" content={SITE_TITLE} />
+    <meta property="og:image:alt" content={fullTitle} />
     <meta property="og:locale" content="ja_JP" />
 
     <!-- Twitter -->
@@ -48,7 +48,7 @@ const isBlog = pathname.startsWith('/blog');
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageURL} />
-    <meta name="twitter:image:alt" content={SITE_TITLE} />
+    <meta name="twitter:image:alt" content={fullTitle} />
       
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
