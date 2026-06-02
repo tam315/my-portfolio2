@@ -2,6 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import profileImage from "../assets/profile.jpg";
+import caseGoodmenu from "../assets/case-goodmenu.png";
+import caseRci from "../assets/case-rci.png";
+import casePairwise from "../assets/case-pairwise.png";
+import caseAssetLife from "../content/blog/2024-04-19-asset-life-calculator/image-1.png";
+import caseNote from "../assets/case-note.png";
 
 const posts = (await getCollection("blog"))
   .sort(
@@ -19,10 +24,58 @@ const profileItems = [
   "アマチュア無線3級",
   "島根県浜田市",
 ];
+
+const services = [
+  {
+    title: "GoodMenu",
+    href: "https://goodmenu.io/",
+    description: "飲食店のメニューを電子化するためのSaaS。年間ユーザーのべ20万人。",
+    image: caseGoodmenu,
+    imageAlt: "GoodMenu のスクリーンショット",
+    titleClass: "tracking-wide",
+    fallback: "from-[#1f6f8c] to-[#2ea6c9]",
+  },
+  {
+    title: "React Compare Image",
+    href: "https://www.npmjs.com/package/react-compare-image",
+    description: "画像比較のためのReactライブラリ。年間150万回ダウンロード。",
+    image: caseRci,
+    imageAlt: "React Compare Image のスクリーンショット",
+    titleClass: "tracking-wide",
+    fallback: "from-[#2a3f6e] to-[#4f7bd6]",
+  },
+  {
+    title: "Pairwise Pict Online",
+    href: "https://pairwise.yuuniworks.com/",
+    description: "ペアワイズテストケース生成ツール。年間ユーザーのべ3万人。",
+    image: casePairwise,
+    imageAlt: "Pairwise Pict Online のスクリーンショット",
+    titleClass: "tracking-wide",
+    fallback: "from-[#1e5e57] to-[#2fb6a8]",
+  },
+  {
+    title: "中古償却資産の耐用年数計算ツール",
+    href: "https://durable-years.yuuniworks.com/",
+    description: "年間ユーザーのべ2万人。",
+    image: caseAssetLife,
+    imageAlt: "中古償却資産の耐用年数計算ツールのスクリーンショット",
+    titleClass: "tracking-wide",
+    fallback: "from-[#383a73] to-[#6b6fc4]",
+  },
+  {
+    title: "Yuuniworks Note",
+    href: "https://note.yuuniworks.com/about",
+    description: "日々の学びを綴っているノート。",
+    image: caseNote,
+    imageAlt: "Yuuniworks Note のスクリーンショット",
+    titleClass: "tracking-wide",
+    fallback: "from-[#234a6e] to-[#3a7fb0]",
+  },
+];
 ---
 
 <Layout title="Shota Tamura">
-  <main class="max-w-3xl mx-auto px-8 pb-20">
+  <main class="max-w-5xl mx-auto px-8 pb-20">
     <!-- HERO -->
     <section class="pt-16 pb-12 sm:pt-20 sm:pb-14">
       <div
@@ -96,67 +149,48 @@ const profileItems = [
       >
         自社サービス等
       </h2>
-      <div class="flex flex-col gap-3">
-        <article>
-          <a
-            href="https://goodmenu.io/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-ui text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors"
-            >GoodMenu</a
-          >
-          <p class="text-small text-muted mt-2">
-            飲食店のメニューを電子化するためのSaaS。年間ユーザーのべ20万人。
-          </p>
-        </article>
-
-        <article>
-          <a
-            href="https://www.npmjs.com/package/react-compare-image"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-ui text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors"
-            >React Compare Image</a
-          >
-          <p class="text-small text-muted mt-2">
-            画像比較のためのReactライブラリ。年間150万回ダウンロード。
-          </p>
-        </article>
-
-        <article>
-          <a
-            href="https://pairwise.yuuniworks.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-ui text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors"
-            >Pairwise Pict Online</a
-          >
-          <p class="text-small text-muted mt-2">
-            ペアワイズテストケース生成ツール。年間ユーザーのべ3万人。
-          </p>
-        </article>
-
-        <article>
-          <a
-            href="https://durable-years.yuuniworks.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-ui text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors"
-            >中古償却資産の耐用年数計算ツール</a
-          >
-          <p class="text-small text-muted mt-2">年間ユーザーのべ2万人。</p>
-        </article>
-
-        <article>
-          <a
-            href="https://note.yuuniworks.com/about"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-ui text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors"
-            >Yuuniworks Note</a
-          >
-          <p class="text-ui text-muted mt-2">日々の学びを綴っているノート。</p>
-        </article>
+      <div class="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          services.map((service) => (
+            <a
+              href={service.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex h-full flex-col overflow-hidden rounded-md border border-white/7 bg-[#1f232c] text-content no-underline shadow-[0_2px_14px_rgba(0,0,0,0.24)] transition-shadow duration-200 hover:shadow-[0_4px_10px_rgba(255,255,255,0.13)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/45 [html[data-theme=light]_&]:border-black/10 [html[data-theme=light]_&]:bg-[#f8f9fc] [html[data-theme=light]_&]:shadow-[0_1px_4px_rgba(13,16,24,0.04)] [html[data-theme=light]_&]:hover:shadow-[0_4px_10px_rgba(13,16,24,0.12)]"
+            >
+              <figure
+                class:list={[
+                  "relative m-0 aspect-[2/1] overflow-hidden bg-linear-to-br",
+                  service.fallback,
+                ]}
+              >
+                <img
+                  src={service.image.src}
+                  alt={service.imageAlt}
+                  width={service.image.width}
+                  height={service.image.height}
+                  loading="lazy"
+                  decoding="async"
+                  class="absolute inset-0 h-full w-full object-cover blur-[1px] [html[data-theme=dark]_&]:brightness-70 [html[data-theme=dark]_&]:saturate-60 [html[data-theme=light]_&]:brightness-95 [html[data-theme=light]_&]:saturate-85"
+                />
+                <span class="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(10,13,18,0.44)_0%,rgba(10,13,18,0)_50%)]" />
+                <figcaption
+                  class:list={[
+                    "absolute bottom-4 left-[18px] right-[18px] z-10 m-0 text-[16px] font-semibold leading-snug text-white",
+                    service.titleClass,
+                  ]}
+                >
+                  {service.title}
+                </figcaption>
+              </figure>
+              <div class="flex flex-1 items-start px-5 py-[18px] [html[data-theme=light]_&]:bg-[#f8f9fc]">
+                <p class="m-0 text-[14px] leading-[1.7] text-content">
+                  {service.description}
+                </p>
+              </div>
+            </a>
+          ))
+        }
       </div>
     </section>
 
