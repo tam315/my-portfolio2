@@ -19,6 +19,7 @@ const ogImageURL = new URL('/og-image.png', Astro.site);
 const pathname = Astro.url.pathname;
 const isAbout = pathname === '/';
 const isBlog = pathname.startsWith('/blog');
+const isContact = pathname.startsWith('/contact');
 ---
 
 <html lang="ja" class="bg-surface text-content">
@@ -78,6 +79,10 @@ const isBlog = pathname.startsWith('/blog');
             href="/blog"
             class:list={['nav-underline font-sans text-small transition-colors', isBlog ? 'active text-content' : 'text-muted hover:text-content']}
           >Blog</a>
+          <a
+            href="/contact"
+            class:list={['nav-underline font-sans text-small transition-colors', isContact ? 'active text-content' : 'text-muted hover:text-content']}
+          >Contact</a>
         </div>
         <ThemeToggle />
       </div>
