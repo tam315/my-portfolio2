@@ -1,23 +1,54 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import profileImage from '../assets/profile.jpg';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 ).slice(0, 5);
+
+const profileItems = [
+  'ソフトウェアエンジニア',
+  '個人事業主',
+  '小学校教諭一種',
+  'FP2級',
+  'アマチュア無線3級',
+  '@島根県浜田市',
+];
 ---
 
 <Layout title="Shota Tamura">
   <main class="max-w-3xl mx-auto px-8 pb-20">
 
     <!-- HERO -->
-    <section class="pt-14 pb-10">
-      <h1 class="font-sans font-light text-display text-strong mb-2">
-        Shota<br>Tamura
-      </h1>
-      <p class="text-small text-muted leading-relaxed">
-        ソフトウェアエンジニア@島根県浜田市
-      </p>
+    <section class="pt-16 pb-12 sm:pt-20 sm:pb-14">
+      <div class="flex flex-col items-center text-center sm:flex-row sm:items-center sm:gap-12 sm:text-left">
+        <figure class="relative size-32 shrink-0 overflow-hidden rounded-full border border-border bg-border/30 shadow-[0_16px_44px_rgba(0,0,0,0.22)] sm:size-48">
+          <img
+            src={profileImage.src}
+            alt="作業風景のプロフィール写真"
+            width={profileImage.width}
+            height={profileImage.height}
+            class="h-full w-full scale-120 object-cover object-[58%_44%] grayscale-80 contrast-120 saturate-85"
+            loading="eager"
+            decoding="async"
+          />
+        </figure>
+        <div class="min-w-0">
+          <h1 class="mt-[30px] font-sans text-[clamp(34px,5vw,54px)] font-semibold leading-[1.08] text-strong sm:mt-0">
+            Shota<br>Tamura
+          </h1>
+          <div class="mx-auto mt-[18px] h-[3px] w-10 rounded-full bg-accent sm:mx-0 sm:mt-[22px] sm:w-[46px]"></div>
+          <p class="mx-auto mt-[18px] flex max-w-[30ch] flex-wrap items-center justify-center gap-x-[0.45em] gap-y-0.5 text-small leading-[1.6] text-muted sm:mx-0 sm:mt-[22px] sm:max-w-[40ch] sm:justify-start sm:text-[15.5px] sm:leading-[1.7]">
+            {profileItems.map((item, index) => (
+              <>
+                {index > 0 && <span class="text-accent" aria-hidden="true">/</span>}
+                <span class="whitespace-nowrap">{item}</span>
+              </>
+            ))}
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- 事業内容 -->
