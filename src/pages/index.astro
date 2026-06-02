@@ -156,11 +156,11 @@ const services = [
               href={service.href}
               target="_blank"
               rel="noopener noreferrer"
-              class="flex h-full flex-col overflow-hidden rounded-md border border-white/7 bg-[#1f232c] text-content no-underline shadow-[0_2px_14px_rgba(0,0,0,0.24)] transition-shadow duration-200 hover:shadow-[0_4px_10px_rgba(255,255,255,0.13)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/45 [html[data-theme=light]_&]:border-black/10 [html[data-theme=light]_&]:bg-[#f8f9fc] [html[data-theme=light]_&]:shadow-[0_1px_4px_rgba(13,16,24,0.04)] [html[data-theme=light]_&]:hover:shadow-[0_4px_10px_rgba(13,16,24,0.12)]"
+              class="block h-full overflow-hidden rounded-md border border-white/7 bg-[#1f232c] text-content no-underline shadow-[0_2px_14px_rgba(0,0,0,0.24)] transition-shadow duration-200 hover:shadow-[0_4px_10px_rgba(255,255,255,0.13)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/45 [html[data-theme=light]_&]:border-black/10 [html[data-theme=light]_&]:bg-[#f8f9fc] [html[data-theme=light]_&]:shadow-[0_1px_4px_rgba(13,16,24,0.04)] [html[data-theme=light]_&]:hover:shadow-[0_4px_10px_rgba(13,16,24,0.12)]"
             >
               <figure
                 class:list={[
-                  "relative m-0 aspect-[2/1] overflow-hidden bg-linear-to-br",
+                  "relative m-0 aspect-video h-full overflow-hidden bg-linear-to-br",
                   service.fallback,
                 ]}
               >
@@ -171,23 +171,25 @@ const services = [
                   height={service.image.height}
                   loading="lazy"
                   decoding="async"
-                  class="absolute inset-0 h-full w-full object-cover blur-[1px] [html[data-theme=dark]_&]:brightness-70 [html[data-theme=dark]_&]:saturate-60 [html[data-theme=light]_&]:brightness-95 [html[data-theme=light]_&]:saturate-85"
+                  class="absolute inset-0 h-full w-full object-cover blur-[1px] [html[data-theme=dark]_&]:brightness-88 [html[data-theme=dark]_&]:saturate-75 [html[data-theme=light]_&]:brightness-100 [html[data-theme=light]_&]:saturate-90"
                 />
-                <span class="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(10,13,18,0.44)_0%,rgba(10,13,18,0)_50%)]" />
+                <span class="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(10,13,18,0.68)_0%,rgba(10,13,18,0.42)_34%,rgba(10,13,18,0.04)_76%)]" />
                 <figcaption
-                  class:list={[
-                    "absolute bottom-4 left-[18px] right-[18px] z-10 m-0 text-[16px] font-semibold leading-snug text-white",
-                    service.titleClass,
-                  ]}
+                  class="absolute bottom-4 left-[18px] right-[18px] z-10 m-0 text-white"
                 >
-                  {service.title}
+                  <span
+                    class:list={[
+                      "block text-[16px] font-semibold leading-snug",
+                      service.titleClass,
+                    ]}
+                  >
+                    {service.title}
+                  </span>
+                  <span class="mt-2 block text-[13px] leading-[1.55] text-white/82">
+                    {service.description}
+                  </span>
                 </figcaption>
               </figure>
-              <div class="flex flex-1 items-start px-5 py-[18px] [html[data-theme=light]_&]:bg-[#f8f9fc]">
-                <p class="m-0 text-[14px] leading-[1.7] text-content">
-                  {service.description}
-                </p>
-              </div>
             </a>
           ))
         }
