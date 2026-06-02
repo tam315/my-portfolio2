@@ -52,14 +52,17 @@ const profileItems = [
           >
           </div>
           <p
-            class="mx-auto mt-[18px] flex max-w-[30ch] flex-wrap items-center justify-center gap-x-[0.45em] gap-y-0.5 text-small leading-[1.6] text-muted sm:mx-0 sm:mt-[22px] sm:max-w-[40ch] sm:justify-start sm:text-[15.5px] sm:leading-[1.7]"
+            class="mx-auto mt-[18px] flex max-w-[30ch] flex-wrap items-center justify-center gap-y-0.5 text-small leading-[1.6] text-muted sm:mx-0 sm:mt-[22px] sm:max-w-[40ch] sm:justify-start sm:text-[15.5px] sm:leading-[1.7]"
           >
             {
               profileItems.map((item, index) => (
-                <span class="whitespace-nowrap">
+                <span class="inline-flex items-center whitespace-nowrap">
                   {item}
                   {index < profileItems.length - 1 && (
-                    <span class="text-accent" aria-hidden="true">
+                    <span
+                      class="inline-flex px-[0.45em] text-accent"
+                      aria-hidden="true"
+                    >
                       /
                     </span>
                   )}
@@ -211,7 +214,7 @@ const profileItems = [
               rel="noopener noreferrer"
               class="text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors"
               >Goodmenu.io</a
-            > という飲食店向けSaaSの開発運営
+            > という飲食店向けSaaSの開発運営ほか、各種の受託開発
           </span>
         </div>
       </div>
