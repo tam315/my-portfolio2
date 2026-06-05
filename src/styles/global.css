@@ -10,6 +10,9 @@
   --color-strong:    #f0f2f7; /* h1h2h3など */
   --color-accent:    oklch(0.75 0.16 230); /* セクションタイトルの色 */
   --color-amber:     oklch(0.72 0.13 50); /* インラインコードの色 */
+  --color-glass-card: rgba(10, 13, 18, 0.42);
+  --color-glass-card-text: #f5f7fb;
+  --color-glass-card-muted: rgba(245, 247, 251, 0.82);
 
   /*  families */
   --font-sans: "IBM Plex Sans JP", sans-serif;
@@ -37,6 +40,9 @@ html[data-theme="light"] {
   --color-strong:   #0d1018;
   --color-accent:   oklch(0.48 0.16 230);
   --color-amber:    oklch(0.48 0.13 50);
+  --color-glass-card: rgba(224, 228, 236, 0.48);
+  --color-glass-card-text: #0d1018;
+  --color-glass-card-muted: rgba(13, 16, 24, 0.72);
 }
 
 /* ロゴが見えなくなるので色調を反転 */
