@@ -5,7 +5,6 @@ import profileImage from "../assets/profile.jpg";
 import caseGoodmenu from "../assets/case-goodmenu.png";
 import caseRci from "../assets/case-rci.png";
 import casePairwise from "../assets/case-pairwise.png";
-import caseAssetLife from "../content/blog/2024-04-19-asset-life-calculator/image-1.png";
 import caseNote from "../assets/case-note.png";
 
 const posts = (await getCollection("blog"))
@@ -54,15 +53,6 @@ const services = [
     fallback: "from-[#1e5e57] to-[#2fb6a8]",
   },
   {
-    title: "中古償却資産の耐用年数計算ツール",
-    href: "https://durable-years.yuuniworks.com/",
-    description: "年間ユーザーのべ2万人。",
-    image: caseAssetLife,
-    imageAlt: "中古償却資産の耐用年数計算ツールのスクリーンショット",
-    titleClass: "tracking-wide",
-    fallback: "from-[#383a73] to-[#6b6fc4]",
-  },
-  {
     title: "Yuuniworks Note",
     href: "https://note.yuuniworks.com/about",
     description: "日々の学びを綴っているノート。",
@@ -75,7 +65,7 @@ const services = [
 ---
 
 <Layout title="Shota Tamura">
-  <main class="max-w-5xl mx-auto px-8 pb-20">
+  <main class="max-w-3xl mx-auto px-8 pb-20">
     <!-- HERO -->
     <section class="pt-16 pb-12 sm:pt-20 sm:pb-14">
       <div
@@ -149,7 +139,7 @@ const services = [
       >
         自社サービス等
       </h2>
-      <div class="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="grid grid-cols-1 gap-7 sm:grid-cols-2">
         {
           services.map((service) => (
             <a
@@ -174,7 +164,7 @@ const services = [
                   class="absolute inset-0 h-full w-full scale-[1.02] object-cover blur-[1px]"
                 />
                 <figcaption
-                  class="absolute bottom-0 left-0 right-0 z-10 m-0 bg-[rgba(10,13,18,0.68)] px-4 py-3 text-white"
+                  class="absolute bottom-0 left-0 right-0 z-10 m-0 bg-[var(--color-glass-card)] px-4 py-3 text-[var(--color-glass-card-text)] backdrop-blur-md"
                 >
                   <span
                     class:list={[
@@ -184,7 +174,7 @@ const services = [
                   >
                     {service.title}
                   </span>
-                  <span class="mt-2 block text-[13px] leading-[1.55] text-white/82">
+                  <span class="mt-2 block text-[13px] leading-[1.55] text-[var(--color-glass-card-muted)]">
                     {service.description}
                   </span>
                 </figcaption>
