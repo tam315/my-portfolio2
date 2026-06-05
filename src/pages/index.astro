@@ -4,8 +4,7 @@ import { getCollection } from "astro:content";
 import profileImage from "../assets/profile.jpg";
 import caseGoodmenu from "../assets/case-goodmenu.png";
 import caseRci from "../assets/case-rci.png";
-import casePairwise from "../assets/case-pairwise.png";
-import caseNote from "../assets/case-note.png";
+import casePairwise from "../assets/case-pairwise.jpg";
 
 const posts = (await getCollection("blog"))
   .sort(
@@ -51,15 +50,6 @@ const services = [
     imageAlt: "Pairwise Pict Online のスクリーンショット",
     titleClass: "tracking-wide",
     fallback: "from-[#1e5e57] to-[#2fb6a8]",
-  },
-  {
-    title: "Yuuniworks Note",
-    href: "https://note.yuuniworks.com/about",
-    description: "日々の学びを綴っているノート。",
-    image: caseNote,
-    imageAlt: "Yuuniworks Note のスクリーンショット",
-    titleClass: "tracking-wide",
-    fallback: "from-[#234a6e] to-[#3a7fb0]",
   },
 ];
 ---
@@ -139,7 +129,7 @@ const services = [
       >
         自社サービス等
       </h2>
-      <div class="grid grid-cols-1 gap-7 sm:grid-cols-2">
+      <div class="grid grid-cols-1 gap-7 sm:grid-cols-3">
         {
           services.map((service) => (
             <a
@@ -150,7 +140,7 @@ const services = [
             >
               <figure
                 class:list={[
-                  "relative m-0 aspect-video h-full overflow-hidden bg-linear-to-br",
+                  "relative m-0 aspect-video h-full overflow-hidden bg-linear-to-br sm:aspect-square",
                   service.fallback,
                 ]}
               >
@@ -161,7 +151,7 @@ const services = [
                   height={service.image.height}
                   loading="lazy"
                   decoding="async"
-                  class="absolute inset-0 h-full w-full scale-[1.02] object-cover blur-[1px]"
+                  class="absolute inset-0 h-full w-full object-cover"
                 />
                 <figcaption
                   class="absolute bottom-0 left-0 right-0 z-10 m-0 bg-[var(--color-glass-card)] px-4 py-3 text-[var(--color-glass-card-text)] backdrop-blur-md"
