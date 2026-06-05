@@ -156,7 +156,7 @@ const services = [
               href={service.href}
               target="_blank"
               rel="noopener noreferrer"
-              class="block h-full overflow-hidden rounded-md border border-white/7 bg-[#1f232c] text-content no-underline shadow-[0_2px_14px_rgba(0,0,0,0.24)] transition-shadow duration-200 hover:shadow-[0_4px_10px_rgba(255,255,255,0.13)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/45 [html[data-theme=light]_&]:border-black/10 [html[data-theme=light]_&]:bg-[#f8f9fc] [html[data-theme=light]_&]:shadow-[0_1px_4px_rgba(13,16,24,0.04)] [html[data-theme=light]_&]:hover:shadow-[0_4px_10px_rgba(13,16,24,0.12)]"
+              class="block no-underline shadow-[0_4px_14px_rgba(0,0,0,0.22)] transition-shadow duration-150 hover:shadow-[0_10px_24px_rgba(0,0,0,0.34)]"
             >
               <figure
                 class:list={[
@@ -171,11 +171,10 @@ const services = [
                   height={service.image.height}
                   loading="lazy"
                   decoding="async"
-                  class="absolute inset-0 h-full w-full object-cover blur-[1px] [html[data-theme=dark]_&]:brightness-88 [html[data-theme=dark]_&]:saturate-75 [html[data-theme=light]_&]:brightness-100 [html[data-theme=light]_&]:saturate-90"
+                  class="absolute inset-0 h-full w-full scale-[1.02] object-cover blur-[1px]"
                 />
-                <span class="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(10,13,18,0.68)_0%,rgba(10,13,18,0.42)_34%,rgba(10,13,18,0.04)_76%)]" />
                 <figcaption
-                  class="absolute bottom-4 left-[18px] right-[18px] z-10 m-0 text-white"
+                  class="absolute bottom-0 left-0 right-0 z-10 m-0 bg-[rgba(10,13,18,0.68)] px-4 py-3 text-white"
                 >
                   <span
                     class:list={[

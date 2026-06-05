@@ -11,7 +11,7 @@
   --color-accent:    oklch(0.75 0.16 230); /* セクションタイトルの色 */
   --color-amber:     oklch(0.72 0.13 50); /* インラインコードの色 */
 
-  /* Font families */
+  /*  families */
   --font-sans: "IBM Plex Sans JP", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
 
