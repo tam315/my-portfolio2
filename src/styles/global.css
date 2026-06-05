@@ -40,7 +40,7 @@ html[data-theme="light"] {
   --color-strong:   #0d1018;
   --color-accent:   oklch(0.48 0.16 230);
   --color-amber:    oklch(0.48 0.13 50);
-  --color-glass-card: rgba(224, 228, 236, 0.48);
+  --color-glass-card: rgba(255, 255, 255, 0.48);
   --color-glass-card-text: #0d1018;
   --color-glass-card-muted: rgba(13, 16, 24, 0.72);
 }
