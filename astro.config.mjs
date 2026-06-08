@@ -13,14 +13,24 @@ export default defineConfig({
   integrations: [react(), sitemap()],
 
   markdown: {
+    shikiConfig: {
+      themes: {
+        light: 'catppuccin-latte',
+        dark: 'catppuccin-mocha'
+      },
+      defaultColor: false
+    },
     rehypePlugins: [
-      [rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
-    ],
+      [
+        rehypeExternalLinks,
+        { target: '_blank', rel: ['noopener', 'noreferrer'] }
+      ]
+    ]
   },
 
   image: {
     layout: 'constrained',
-    responsiveStyles: true,
+    responsiveStyles: true
   },
 
   vite: {
