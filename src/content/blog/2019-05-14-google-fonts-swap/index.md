@@ -1,6 +1,6 @@
 ---
-title: "Google Fontsで`font-display:swap`が使えるように！"
-date: "2019-05-14"
+title: 'Google Fontsで`font-display:swap`が使えるように！'
+date: '2019-05-14'
 ---
 
 Google Fonts を使ったとき、CSS に`font-display: swap`が設定されていないために、フォントデータの読み込み中に文字が消えてしまうという問題がありました。

@@ -1,6 +1,6 @@
 ---
-title: "ちまたで噂のCline / Roo Codeを試した感想"
-date: "2025-03-04"
+title: 'ちまたで噂のCline / Roo Codeを試した感想'
+date: '2025-03-04'
 ---
 
 エンジニアの仕事はAIに駆逐されるのではないかと言われる昨今、話題の Cline / Roo Code + Claude Sonnet 3.7 を試してみた感想や得られた知見をペタりしておく。
@@ -10,7 +10,7 @@ date: "2025-03-04"
 - 適切なコメント、意図が伝わる変数名、明確で一貫性のあるコード構造を保つことなどがこれまで以上に重要になっている。コードがneat and tidyであれば`.clinerules`に長々と説明を書かずともAIはちゃんと働く（か、それこそ「Hey Cline, `.clinerules`を生成して」で一発で終わる）。
 - 単純作業で人間が消耗することは今後はほとんどなくなるだろう。元のコードがよほど乱雑でない限り。
 - Claude APIはTier1ではすぐに429エラー（レート制限超過）になるため、Tier2は必須といえる。初回課金時に40ドル以上をチャージしておくと良いかも？
-    - https://docs.anthropic.com/en/api/rate-limits#requirements-to-advance-tier
+  - https://docs.anthropic.com/en/api/rate-limits#requirements-to-advance-tier
 
 総じて、大事なことは以前と変わっていないし、これまでやっていたことをこれからもやっていくだけなんだと思う。
 

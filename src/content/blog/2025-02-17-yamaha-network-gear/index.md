@@ -1,6 +1,6 @@
 ---
-title: "YAMAHA製の有線ルーター・無線APを導入した"
-date: "2025-02-17"
+title: 'YAMAHA製の有線ルーター・無線APを導入した'
+date: '2025-02-17'
 ---
 
 回線の安定化のため、YAMAHAの[RTX830](https://network.yamaha.com/products/routers/rtx830/index)と[WLX323](https://network.yamaha.com/products/wireless_lan/wlx323/index)を導入した。やったことのメモなどを残しておく。
@@ -109,48 +109,47 @@ no telnet host # 接続元の制限を削除
 
 WAN側との入出力に関するルーティング設定についてはWAN設定の際に自動で設定されるが、少しだけ手直しした。WAN側のプライベートアドレスへのアクセスやその逆を完全に禁じるなど。これもGUIから設定可能。
 
-- 設定例
-    
-    ```bash
-    ip lan2 secure filter in 101000 101001 101002 101003 101020 101021 101022 101023 101024 101025 101030
-    ip lan2 secure filter out 101010 101011 101012 101013 101020 101021 101022 101023 101024 101025 101026 101027 101099 dynamic 101080 101081 101082 101083 101084 101085 101098 101099
-    ip lan2 nat descriptor 200
-    ip filter 101000 reject 10.0.0.0/8 * * * *
-    ip filter 101001 reject 172.16.0.0/12 * * * *
-    ip filter 101002 reject 192.168.0.0/16 * * * *
-    ip filter 101003 reject 192.168.100.0/24 * * * *
-    ip filter 101010 reject * 10.0.0.0/8 * * *
-    ip filter 101011 reject * 172.16.0.0/12 * * *
-    ip filter 101012 reject * 192.168.0.0/16 * * *
-    ip filter 101013 reject * 192.168.100.0/24 * * *
-    ip filter 101020 reject * * udp,tcp 135 *
-    ip filter 101021 reject * * udp,tcp * 135
-    ip filter 101022 reject * * udp,tcp netbios_ns-netbios_ssn *
-    ip filter 101023 reject * * udp,tcp * netbios_ns-netbios_ssn
-    ip filter 101024 reject * * udp,tcp 445 *
-    ip filter 101025 reject * * udp,tcp * 445
-    ip filter 101026 restrict * * tcpfin * www,21,nntp
-    ip filter 101027 restrict * * tcprst * www,21,nntp
-    ip filter 101030 pass * 192.168.100.0/24 icmp * *
-    ip filter 101031 pass * 192.168.100.0/24 established * *
-    ip filter 101032 pass * 192.168.100.0/24 tcp * ident
-    ip filter 101033 pass * 192.168.100.0/24 tcp ftpdata *
-    ip filter 101034 pass * 192.168.100.0/24 tcp,udp * domain
-    ip filter 101035 pass * 192.168.100.0/24 udp domain *
-    ip filter 101036 pass * 192.168.100.0/24 udp * ntp
-    ip filter 101037 pass * 192.168.100.0/24 udp ntp *
-    ip filter 101099 pass * * * * *
-    ip filter 500000 restrict * * * * *
-    ip filter dynamic 101080 * * ftp
-    ip filter dynamic 101081 * * domain
-    ip filter dynamic 101082 * * www
-    ip filter dynamic 101083 * * smtp
-    ip filter dynamic 101084 * * pop3
-    ip filter dynamic 101085 * * submission
-    ip filter dynamic 101098 * * tcp
-    ip filter dynamic 101099 * * udp
-    ```
-    
+設定例↓
+
+```bash
+ip lan2 secure filter in 101000 101001 101002 101003 101020 101021 101022 101023 101024 101025 101030
+ip lan2 secure filter out 101010 101011 101012 101013 101020 101021 101022 101023 101024 101025 101026 101027 101099 dynamic 101080 101081 101082 101083 101084 101085 101098 101099
+ip lan2 nat descriptor 200
+ip filter 101000 reject 10.0.0.0/8 * * * *
+ip filter 101001 reject 172.16.0.0/12 * * * *
+ip filter 101002 reject 192.168.0.0/16 * * * *
+ip filter 101003 reject 192.168.100.0/24 * * * *
+ip filter 101010 reject * 10.0.0.0/8 * * *
+ip filter 101011 reject * 172.16.0.0/12 * * *
+ip filter 101012 reject * 192.168.0.0/16 * * *
+ip filter 101013 reject * 192.168.100.0/24 * * *
+ip filter 101020 reject * * udp,tcp 135 *
+ip filter 101021 reject * * udp,tcp * 135
+ip filter 101022 reject * * udp,tcp netbios_ns-netbios_ssn *
+ip filter 101023 reject * * udp,tcp * netbios_ns-netbios_ssn
+ip filter 101024 reject * * udp,tcp 445 *
+ip filter 101025 reject * * udp,tcp * 445
+ip filter 101026 restrict * * tcpfin * www,21,nntp
+ip filter 101027 restrict * * tcprst * www,21,nntp
+ip filter 101030 pass * 192.168.100.0/24 icmp * *
+ip filter 101031 pass * 192.168.100.0/24 established * *
+ip filter 101032 pass * 192.168.100.0/24 tcp * ident
+ip filter 101033 pass * 192.168.100.0/24 tcp ftpdata *
+ip filter 101034 pass * 192.168.100.0/24 tcp,udp * domain
+ip filter 101035 pass * 192.168.100.0/24 udp domain *
+ip filter 101036 pass * 192.168.100.0/24 udp * ntp
+ip filter 101037 pass * 192.168.100.0/24 udp ntp *
+ip filter 101099 pass * * * * *
+ip filter 500000 restrict * * * * *
+ip filter dynamic 101080 * * ftp
+ip filter dynamic 101081 * * domain
+ip filter dynamic 101082 * * www
+ip filter dynamic 101083 * * smtp
+ip filter dynamic 101084 * * pop3
+ip filter dynamic 101085 * * submission
+ip filter dynamic 101098 * * tcp
+ip filter dynamic 101099 * * udp
+```
 
 ## DHCPの動作モードを調整
 
@@ -179,15 +178,15 @@ YAMAHAの無線APにはVirtual Access Point (VIP)という機能があり、最�
 これをふまえ、最終的には以下の4つのSSIDを使う構成にした。
 
 1. **6GHz/5GHz × WPA3**
-    - メインのSSID。特に支障がないかぎり基本的にこのSSIDを使う。
-    - 6GHzと他のバンドを束ねるには、規格の制約上、WPA3が必須である点に注意。Mix Modeでは束ねられない。
-    - 2.4GHz帯は含めていない。混雑していてカオスだし、範囲もそれほど広がらず、メリットがないため。
+   - メインのSSID。特に支障がないかぎり基本的にこのSSIDを使う。
+   - 6GHzと他のバンドを束ねるには、規格の制約上、WPA3が必須である点に注意。Mix Modeでは束ねられない。
+   - 2.4GHz帯は含めていない。混雑していてカオスだし、範囲もそれほど広がらず、メリットがないため。
 2. **5GHz × WPA2**
-    - 5GHz帯は利用できるものの、WPA2にのみ対応しているIoT機器向けのSSID。
+   - 5GHz帯は利用できるものの、WPA2にのみ対応しているIoT機器向けのSSID。
 3. **2.4GHz × WPA3** / **WPA2** Mix Mode
-    - 2.4GHz帯のみ利用できるIoT機器向けのSSID。
+   - 2.4GHz帯のみ利用できるIoT機器向けのSSID。
 4. **2.4GHz × WPA2** Mix Mode
-    - Mix Modeだと正常に動作しない💩端末が一台だけあり、それ専用のSSID。早々に無くしたい。
+   - Mix Modeだと正常に動作しない💩端末が一台だけあり、それ専用のSSID。早々に無くしたい。
 
 ## メール通知の有効化
 
@@ -202,6 +201,6 @@ YAMAHAのルーターにはL2MSという機器監視の仕組みがあり、異�
 - 5GHz帯と比べると、6GHz帯は本当に電波が飛ばない。安定して使うには同じ部屋の内での利用が限界で、二階建て一軒家を1台のAPでカバーしようとしてもうまくいかない。とくにスマートフォンはノートPCと比べて電波感度が弱く、5GHzで繋いだほうがマシという状況が発生する。
 - YAMAHA独自のローミング機能をオンにしていると電波が弱くなったときに自動でバスバス接続をAP側から切られるので、無効化した。一軒家だとほぼすべての部屋がAPと壁越しのアクセスになり、そんなに電波は強くないため。
 - YAMAHAは情報公開がすごい。しかも全てちゃんとメンテナンスされている。
-    - コマンドの打ち方は阿部寛のホームページに網羅されているし → https://www.rtpro.yamaha.co.jp/RT/manual/rt-common/
-    - ログメッセージの意味は事細かに説明されているし → https://www.rtpro.yamaha.co.jp/AP/docs/wlx323/log_reference.html
-    - 技術資料もそこまで公開していいんすかレベルだし → https://www.rtpro.yamaha.co.jp/AP/docs/wlx323/white-paper.html
+  - コマンドの打ち方は阿部寛のホームページに網羅されているし → https://www.rtpro.yamaha.co.jp/RT/manual/rt-common/
+  - ログメッセージの意味は事細かに説明されているし → https://www.rtpro.yamaha.co.jp/AP/docs/wlx323/log_reference.html
+  - 技術資料もそこまで公開していいんすかレベルだし → https://www.rtpro.yamaha.co.jp/AP/docs/wlx323/white-paper.html

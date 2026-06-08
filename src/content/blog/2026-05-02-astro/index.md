@@ -1,6 +1,6 @@
 ---
-title: "ポートフォリオサイトをAstroに乗り換えた"
-date: "2026-05-02"
+title: 'ポートフォリオサイトをAstroに乗り換えた'
+date: '2026-05-02'
 ---
 
 このポートフォリオサイトは、当初は8年前に[Gatsby](https://www.gatsbyjs.com/)で作り、3年前くらいにNotionベースの[Super](https://app.super.so/)に乗り換えて、いままでやってきた。

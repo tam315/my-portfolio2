@@ -1,13 +1,13 @@
 ---
-title: "presentational-componentとcontainer-component"
-date: "2018-05-18"
+title: 'presentational-componentとcontainer-component'
+date: '2018-05-18'
 ---
 
 2019.02.18 更新　 Dan Abramov さんによって元記事が更新されました。いまは[Hook](https://reactjs.org/docs/hooks-overview.html)が使えるので、この記事にこだわりすぎるな、とのことです。
 
 ---
 
-Redux を使うにあたって、どのようにコンポーネントの使い分けるかということについて、下記のサイトが非常にわかりやすかったので、忘れないようにメモしておきます。 
+Redux を使うにあたって、どのようにコンポーネントの使い分けるかということについて、下記のサイトが非常にわかりやすかったので、忘れないようにメモしておきます。
 
 [https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
 
@@ -41,13 +41,13 @@ Redux を使うにあたって、どのようにコンポーネントの使い�
 
 以下、[redux 公式サイト](https://redux.js.org/basics/usage-with-react)より。
 
-|  | Presentational Components | Container Components |
-| --- | --- | --- |
-| 目的 | 見た目(markup, styles) | 働き(データ取得、state のアップデート) |
-| Redux | 関係なし | 関係あり |
-| データの取得 | props | Redux state を subscribe |
-| データの変更 | props から取得した Callback を使う | Redux の actions を Dispatch する |
-| 作成方法 | 手動 | React-Redux の connect() |
+|              | Presentational Components          | Container Components                   |
+| ------------ | ---------------------------------- | -------------------------------------- |
+| 目的         | 見た目(markup, styles)             | 働き(データ取得、state のアップデート) |
+| Redux        | 関係なし                           | 関係あり                               |
+| データの取得 | props                              | Redux state を subscribe               |
+| データの変更 | props から取得した Callback を使う | Redux の actions を Dispatch する      |
+| 作成方法     | 手動                               | React-Redux の connect()               |
 
 ## この分け方にするメリット
 

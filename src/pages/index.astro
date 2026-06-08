@@ -1,57 +1,58 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { getCollection } from "astro:content";
-import profileImage from "../assets/profile.jpg";
-import caseGoodmenu from "../assets/case-goodmenu.png";
-import caseRci from "../assets/case-rci.png";
-import casePairwise from "../assets/case-pairwise.jpg";
+import Layout from '../layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+import profileImage from '../assets/profile.jpg'
+import caseGoodmenu from '../assets/case-goodmenu.png'
+import caseRci from '../assets/case-rci.png'
+import casePairwise from '../assets/case-pairwise.jpg'
 
-const posts = (await getCollection("blog"))
+const posts = (await getCollection('blog'))
   .sort(
     (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
   )
-  .slice(0, 5);
+  .slice(0, 5)
 
 const profileItems = [
-  "ソフトウェアエンジニア",
-  "個人事業主",
-  "Vo,Gt,Dr",
-  "Tesla",
-  "小学校教諭一種",
-  "FP2級",
-  "アマチュア無線3級",
-  "島根県浜田市",
-];
+  'ソフトウェアエンジニア',
+  '個人事業主',
+  'Vo,Gt,Dr',
+  'Tesla',
+  '小学校教諭一種',
+  'FP2級',
+  'アマチュア無線3級',
+  '島根県浜田市',
+]
 
 const services = [
   {
-    title: "GoodMenu",
-    href: "https://goodmenu.io/",
-    description: "飲食店のメニューを電子化するためのSaaS。年間ユーザーのべ20万人。",
+    title: 'GoodMenu',
+    href: 'https://goodmenu.io/',
+    description:
+      '飲食店のメニューを電子化するためのSaaS。年間ユーザーのべ20万人。',
     image: caseGoodmenu,
-    imageAlt: "GoodMenu のスクリーンショット",
-    titleClass: "tracking-wide",
-    fallback: "from-[#1f6f8c] to-[#2ea6c9]",
+    imageAlt: 'GoodMenu のスクリーンショット',
+    titleClass: 'tracking-wide',
+    fallback: 'from-[#1f6f8c] to-[#2ea6c9]',
   },
   {
-    title: "React Compare Image",
-    href: "https://www.npmjs.com/package/react-compare-image",
-    description: "画像比較のためのReactライブラリ。年間150万回ダウンロード。",
+    title: 'React Compare Image',
+    href: 'https://www.npmjs.com/package/react-compare-image',
+    description: '画像比較のためのReactライブラリ。年間150万回ダウンロード。',
     image: caseRci,
-    imageAlt: "React Compare Image のスクリーンショット",
-    titleClass: "tracking-wide",
-    fallback: "from-[#2a3f6e] to-[#4f7bd6]",
+    imageAlt: 'React Compare Image のスクリーンショット',
+    titleClass: 'tracking-wide',
+    fallback: 'from-[#2a3f6e] to-[#4f7bd6]',
   },
   {
-    title: "Pairwise Pict Online",
-    href: "https://pairwise.yuuniworks.com/",
-    description: "ペアワイズテストケース生成ツール。年間ユーザーのべ3万人。",
+    title: 'Pairwise Pict Online',
+    href: 'https://pairwise.yuuniworks.com/',
+    description: 'ペアワイズテストケース生成ツール。年間ユーザーのべ3万人。',
     image: casePairwise,
-    imageAlt: "Pairwise Pict Online のスクリーンショット",
-    titleClass: "tracking-wide",
-    fallback: "from-[#1e5e57] to-[#2fb6a8]",
+    imageAlt: 'Pairwise Pict Online のスクリーンショット',
+    titleClass: 'tracking-wide',
+    fallback: 'from-[#1e5e57] to-[#2fb6a8]',
   },
-];
+]
 ---
 
 <Layout title="Shota Tamura">
@@ -140,7 +141,7 @@ const services = [
             >
               <figure
                 class:list={[
-                  "relative m-0 aspect-video h-full overflow-hidden bg-linear-to-br sm:aspect-square",
+                  'relative m-0 aspect-video h-full overflow-hidden bg-linear-to-br sm:aspect-square',
                   service.fallback,
                 ]}
               >
@@ -153,12 +154,10 @@ const services = [
                   decoding="async"
                   class="absolute inset-0 h-full w-full object-cover"
                 />
-                <figcaption
-                  class="absolute bottom-0 left-0 right-0 z-10 m-0 bg-[var(--color-glass-card)] px-4 py-3 text-[var(--color-glass-card-text)] backdrop-blur-md"
-                >
+                <figcaption class="absolute bottom-0 left-0 right-0 z-10 m-0 bg-[var(--color-glass-card)] px-4 py-3 text-[var(--color-glass-card-text)] backdrop-blur-md">
                   <span
                     class:list={[
-                      "block text-[16px] font-semibold leading-snug",
+                      'block text-[16px] font-semibold leading-snug',
                       service.titleClass,
                     ]}
                   >

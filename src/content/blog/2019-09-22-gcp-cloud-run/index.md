@@ -1,6 +1,6 @@
 ---
-title: "GCP Cloud Run を使ってみた"
-date: "2019-09-22"
+title: 'GCP Cloud Run を使ってみた'
+date: '2019-09-22'
 ---
 
 ## これまでのインフラの課題

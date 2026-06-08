@@ -1,6 +1,6 @@
 ---
-title: "GitHub Actions Certificateを取得した"
-date: "2024-11-14"
+title: 'GitHub Actions Certificateを取得した'
+date: '2024-11-14'
 ---
 
 もう資格がどうこういう歳でもないのだが、久しぶりにバッジ集めたい病が発動したため、普段からゴリゴリ使っているGitHub Actionsの認定資格を取得してみた。

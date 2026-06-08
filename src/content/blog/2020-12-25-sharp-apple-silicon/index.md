@@ -1,6 +1,6 @@
 ---
-title: "Apple Siliconでsharpを動かす"
-date: "2020-12-25"
+title: 'Apple Siliconでsharpを動かす'
+date: '2020-12-25'
 ---
 
 Apple Silicon で`sharp`を動作させるには、少々工夫が必要です。(2021/02/10 現在)
@@ -20,42 +20,38 @@ brew install vips
 ```
 
 - 古い情報
-    
-    Docker を使わずに、ローカル環境で`sharp`を使えるようにする方法です。 この方法を取る場合は、ソースから`libvips`をビルドし、グローバルにインストールして、`sharp`に使用させる必要があります。 ただ、この方法だとランタイムにおいてエラーが出たりしたので、おすすめは後述の Docker を使う方法です。
-    
-    [参考](https://github.com/lovell/sharp/issues/2460)
-    
-    ビルドに必要なライブラリを追加
-    
-    ```
-    brew install pkg-config glib zlib
-    ```
-    
-    [`libvips`の optional-dependencies](https://github.com/libvips/libvips#optional-dependencies)をみながら必要なものをインストールする。
-    
-    ```
-    # 例えばjpeg, png, webpを扱うなら
-    brew install libjpeg-turbo libpng webp
-    
-    # うちの環境では途中でコケることがありました。
-    # もう一回コマンドを実行すると成功したので、原因がよくわかりませんでした。
-    ```
-    
-    `libvips`のソースを[ダウンロード](https://github.com/libvips/libvips/releases)して解凍したのち、以下を実行する
-    
-    ```
-    PKG_CONFIG_PATH=/opt/homebrew/Cellar/zlib/1.2.11/lib/pkgconfig ./configure
-    make
-    sudo make install
-    ```
-    
-    なお、近いうちに何も考えずに使えるプレビルトバイナリが準備されるはずなので、 その暁にはグローバルインストールした`libvips`を消しておきましょう。 余計なトラブルを避けるために。
-    
-    ```bash
-    # vipsのソースフォルダで
-    sudo make uninsatll
-    ```
-    
+  Docker を使わずに、ローカル環境で`sharp`を使えるようにする方法です。 この方法を取る場合は、ソースから`libvips`をビルドし、グローバルにインストールして、`sharp`に使用させる必要があります。 ただ、この方法だとランタイムにおいてエラーが出たりしたので、おすすめは後述の Docker を使う方法です。
+  [参考](https://github.com/lovell/sharp/issues/2460)
+  ビルドに必要なライブラリを追加
+
+  ```
+  brew install pkg-config glib zlib
+  ```
+
+  [`libvips`の optional-dependencies](https://github.com/libvips/libvips#optional-dependencies)をみながら必要なものをインストールする。
+
+  ```
+  # 例えばjpeg, png, webpを扱うなら
+  brew install libjpeg-turbo libpng webp
+
+  # うちの環境では途中でコケることがありました。
+  # もう一回コマンドを実行すると成功したので、原因がよくわかりませんでした。
+  ```
+
+  `libvips`のソースを[ダウンロード](https://github.com/libvips/libvips/releases)して解凍したのち、以下を実行する
+
+  ```
+  PKG_CONFIG_PATH=/opt/homebrew/Cellar/zlib/1.2.11/lib/pkgconfig ./configure
+  make
+  sudo make install
+  ```
+
+  なお、近いうちに何も考えずに使えるプレビルトバイナリが準備されるはずなので、 その暁にはグローバルインストールした`libvips`を消しておきましょう。 余計なトラブルを避けるために。
+
+  ```bash
+  # vipsのソースフォルダで
+  sudo make uninsatll
+  ```
 
 ## 方法その２ Docker 環境で使う
 

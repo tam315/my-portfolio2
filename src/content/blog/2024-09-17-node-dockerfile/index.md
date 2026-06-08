@@ -1,6 +1,6 @@
 ---
-title: "孤高の Node.js 用 Dockerfile を求めて"
-date: "2024-09-17"
+title: '孤高の Node.js 用 Dockerfile を求めて'
+date: '2024-09-17'
 ---
 
 以下を満たす Node.js 用の Dockerfile を作りたい、と思ったときに結構いろいろ手間だったので、屍をここに Dump しておく。
@@ -101,7 +101,6 @@ CMD ["/nodejs/bin/node", "/app/dist/src/index.js"]
     "sourceRoot": "/" // コンソール出力されたパスの頭の`/app`を取り除く
   }
 }
-
 ```
 
 ## その他

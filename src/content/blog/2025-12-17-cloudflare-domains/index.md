@@ -1,6 +1,6 @@
 ---
-title: "ドメイン管理をCloudflareに集約した"
-date: "2025-12-17"
+title: 'ドメイン管理をCloudflareに集約した'
+date: '2025-12-17'
 ---
 
 ドメインまわりの管理については、永らく [Namecheap](https://www.namecheap.com/) と [Route53](https://aws.amazon.com/jp/route53/) にお世話になってきたのだが、そろそろCloudflare教に入信しておかないと来世でひどい目に合うという噂を耳にしたため、レジストラ・DNSともにCloudflareに集約してみた。

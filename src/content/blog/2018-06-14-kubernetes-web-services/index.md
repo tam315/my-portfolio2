@@ -1,6 +1,6 @@
 ---
-title: "kubernetesで複数のwebサービスを楽に管理する"
-date: "2018-06-14"
+title: 'kubernetesで複数のwebサービスを楽に管理する'
+date: '2018-06-14'
 ---
 
 複数ドメインの Web サービスを Kubernetes 上で楽に管理するための環境構築を行ったので、手順をメモしておきます。詳細は参考サイトに非常にわかりやすくまとまっているので、ご参照ください。なお、環境は Google Kubernetes Engine を想定しています。
@@ -8,13 +8,9 @@ date: "2018-06-14"
 ## 目標
 
 - 複数の Web サービスとそれに紐付く Kubernetes サービスを、同一の IP で管理する
-    
-    →**Ingress のバーチャルホスト機能を使う**
-    
+  →**Ingress のバーチャルホスト機能を使う**
 - Let’s Encrypt を使い、証明書の自動取得・更新を行う
-    
-    →[**cert-manager](https://cert-manager.readthedocs.io/en/latest/) を使う**
-    
+  →[\*\*cert-manager](https://cert-manager.readthedocs.io/en/latest/) を使う\*\*
 
 ## Ingress Controller の選定
 
@@ -241,15 +237,15 @@ spec:
 もし、nginx-ingress の使用をやめて 標準の Ingress Controller である GLBC に戻したい場合は、下記の手順を行います。
 
 - Ingress の定義を下記の通り変更し、再デプロイする。
-    
-    ```yaml
-    # 下記の行を削除する
-    kubernetes.io/ingress.class: nginx
-    
-    # もしくは下記の通り記述する（記載がない場合は暗黙的にgceが指定されますが、明示してもOK）
-    kubernetes.io/ingress.class: gce
-    ```
-    
+
+  ```yaml
+  # 下記の行を削除する
+  kubernetes.io/ingress.class: nginx
+
+  # もしくは下記の通り記述する（記載がない場合は暗黙的にgceが指定されますが、明示してもOK）
+  kubernetes.io/ingress.class: gce
+  ```
+
 - DNS の向き先を GLBC(**L7** ロードバランサ)に変更する。IP は`kubectl get ingress`で取得できる。
 
 なお、Ingress Controller の種類にかかわらず、設定情報は Ingress Resource によって抽象化されているため、cert-manager はどちらの環境でも問題なく動作します。

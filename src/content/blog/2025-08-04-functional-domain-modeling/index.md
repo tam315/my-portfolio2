@@ -1,6 +1,6 @@
 ---
-title: "関数型ドメインモデリングを読了した"
-date: "2025-08-04"
+title: '関数型ドメインモデリングを読了した'
+date: '2025-08-04'
 ---
 
 Domain Modeling Made Functional (邦題: 関数型ドメインモデリング) を読了して以下のマークダウンに内容をまとめた。AIの餌になあれ。
@@ -14,20 +14,19 @@ Domain Modeling Made Functional (邦題: 関数型ドメインモデリング) �
 - ビジネスにおいては、データを「変換」する過程にこそ価値がある。静止した「状態」のデータには価値がない。
 - **Algebraic Types System** (代数的データ型)とは、stringやnumberといったプリミティブな型を起点として、Product Types (直積型 / AND) と Sum Types (直和型 / OR) を駆使してあらゆる型を組み上げていく仕組みのこと
 - フラグで表現するのではなく型で表現する
-    - e.g. `isValidatedUser`フラグではなく`ValidetedUser`型
+  - e.g. `isValidatedUser`フラグではなく`ValidetedUser`型
 - Two-phase commitのようなコンテキストをまたいだトランザクションなんて君たちにはきっと扱いきれないんだから、何もしないか、せいぜい結果整合性で我慢しておきなさい
-    - sagaという失敗管理のためのパターンもあるよ
+  - sagaという失敗管理のためのパターンもあるよ
 - **トータル関数 / Total Functions**とは、エラーなども含めた全ての起こり得る事象が、関数のシグネチャに網羅的に記載されている関数のこと
 - 依存性の注入は**カリー化**と**部分適用**により行う
-    - (F#では全ての関数がデフォルトですべてカリー化されていることに衝撃を受けた)
+  - (F#では全ての関数がデフォルトですべてカリー化されていることに衝撃を受けた)
 
 ```tsx
 // TSで書くとこんなイメージ
-type ValidateOrder =
-  (CheckProductCodeExists: Function) => // 依存
-  (CheckAddressExists: Function) => // 依存
-  (UnvalidatedOrder: object) => // 入力
-  ValidatedOrder // 出力
+type ValidateOrder = (CheckProductCodeExists: Function) => // 依存
+(CheckAddressExists: Function) => // 依存
+(UnvalidatedOrder: object) => // 入力
+ValidatedOrder; // 出力
 ```
 
 - シグネチャの異なる2つの関数をつなげるために、出力を入力を最小公倍数にそろえる行為を**Lifting**という
@@ -37,11 +36,11 @@ type ValidateOrder =
 ## 感想・疑問点など
 
 - TypeScriptにはmatch**式**やResult型、result構文がない中で、どの程度関数型プログラミングを効率的に書けるのか
-    - `Result`型はneverthrowあたりを活用すればなんとかなりそう
-    - [先駆者](https://levtech.jp/media/article/column/detail_559/)によると、Result型がネストしたときは辛いらしい
-        - F#の`let!`や`result`構文、Rustの`?`のような構文がTSにもあればいいけど、実装されることは一生なさそう
-    - どこまでやれるのか、やるべきなのかの判断がとても重要になりそう
-        - 以前チャレンジしたときは単に読みづらくなっただけで結局シンプルな記法に戻した経験あり。ドメインエンティティとそのロジックが鬼のようにたくさんあるプロダクトだと効能が高まるのだろう、しらんけれど.com
+  - `Result`型はneverthrowあたりを活用すればなんとかなりそう
+  - [先駆者](https://levtech.jp/media/article/column/detail_559/)によると、Result型がネストしたときは辛いらしい
+    - F#の`let!`や`result`構文、Rustの`?`のような構文がTSにもあればいいけど、実装されることは一生なさそう
+  - どこまでやれるのか、やるべきなのかの判断がとても重要になりそう
+    - 以前チャレンジしたときは単に読みづらくなっただけで結局シンプルな記法に戻した経験あり。ドメインエンティティとそのロジックが鬼のようにたくさんあるプロダクトだと効能が高まるのだろう、しらんけれど.com
 - `1つのトランザクションでは1つの集約のみを更新するのが原則`と書いてあったがそんなこと現実的に可能？？と思ってしまった。心構えが間違っているのかもしれない。
 - コンテキストを分けるにあたってマイクロサービスに分ける必要はなくて別にモノリスでもかまわないとの記載があったが、イベントを伝播させていくためのコードをどう書くかイメージが湧かなかったので、この世の何処かにサンプルコードが落ちていてほしい
 

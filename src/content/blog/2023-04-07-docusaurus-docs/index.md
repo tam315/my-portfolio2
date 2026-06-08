@@ -1,6 +1,6 @@
 ---
-title: "DocuSaurusによるドキュメントサイトの構築"
-date: "2023-04-07"
+title: 'DocuSaurusによるドキュメントサイトの構築'
+date: '2023-04-07'
 ---
 
 ## 概要
@@ -39,14 +39,14 @@ DocuSaurusは基本的にマークダウンファイルをぶっこむだけで�
 ```jsx
 // docusaurus.config.js
 const config = {
-	themeConfig: {
-      algolia: {
-        appId: 'Algoliaから',
-        apiKey: 'メールで届いたキーなどを',
-        indexName: 'ここに書き込む',
-      },
-   },
-}
+  themeConfig: {
+    algolia: {
+      appId: 'Algoliaから',
+      apiKey: 'メールで届いたキーなどを',
+      indexName: 'ここに書き込む',
+    },
+  },
+};
 ```
 
 全文検索が有効になると右上に検索ボックスが表示されます。
@@ -67,17 +67,17 @@ const config = {
 ```jsx
 // docusaurus.config.js
 const config = {
-	presets: [
+  presets: [
     [
       'classic',
-      ({
+      {
         docs: {
           routeBasePath: '/', // ←コレを追加
         },
-      }),
+      },
     ],
   ],
-}
+};
 ```
 
 ### ランディングページを使わない
@@ -145,7 +145,7 @@ const config = {
       },
     ],
   ],
-}
+};
 ```
 
 これで数式が表示できるように！(機械学習の文脈で数学を勉強しなおしていた時期があったのですが結局なにもわからんかった)
@@ -171,7 +171,7 @@ title: About
 
 ```json
 # _category_.json というファイルをカテゴリフォルダに置いて、以下を記述します
-{ 
+{
   "position": 2,  # ←コレ
 }
 ```
@@ -182,7 +182,7 @@ title: About
 
 ```jsx
 const config = {
-presets: [
+  presets: [
     [
       'classic',
       {
@@ -193,7 +193,7 @@ presets: [
       },
     ],
   ],
-}
+};
 ```
 
 ### その他細々とした修正

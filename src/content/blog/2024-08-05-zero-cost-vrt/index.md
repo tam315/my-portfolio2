@@ -1,6 +1,6 @@
 ---
-title: "管理コストゼロのVRTを構築する"
-date: "2024-08-05"
+title: '管理コストゼロのVRTを構築する'
+date: '2024-08-05'
 ---
 
 個人プロジェクトでVRTの仕組みを整える機会があったのでメモ。
@@ -31,7 +31,7 @@ find . -size +1M -ls
 git lfs track "tests/snapshots/**/*.png"
 
 # 設定がちゃんとできたか確認する。実際には.gitattributesに設定値が書き込まれている。
-git lfs track 
+git lfs track
 
 # 管理対象となっている実際のファイルを一覧で見る
 git lfs ls-files
@@ -73,11 +73,10 @@ Git LFSをGithub Actionsで利用する場合は、以下のようにcheckoutす
 テスト実行時には、`page.toHaveScreenshot()`を使って指定したフォルダに画像を生成する。以下のようなutilを作っておくと便利。
 
 ```tsx
-export const takeScreenshot = async (
-  page: Page,
-  name: string,
-) => {
-  await expect(page).toHaveScreenshot(`${name}.png`, {/* オプション設定が必要ならここに */});
+export const takeScreenshot = async (page: Page, name: string) => {
+  await expect(page).toHaveScreenshot(`${name}.png`, {
+    /* オプション設定が必要ならここに */
+  });
 };
 ```
 

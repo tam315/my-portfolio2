@@ -1,6 +1,6 @@
 ---
-title: "Netlifyは遅い"
-date: "2020-09-14"
+title: 'Netlifyは遅い'
+date: '2020-09-14'
 ---
 
 ここ数年、Netlify に大変お世話になってきました。とても便利で助かっているのですが、実はスループットがとても悪いということに気が付きました。
@@ -13,11 +13,11 @@ date: "2020-09-14"
 
 (20201225 追記：この時は知らなかったのですが、今なら Vercel を選ぶかもしれません）
 
-| service | price | スループット | RTT |
-| --- | --- | --- | --- |
-| Netlify | 200GB まで無料以降従量制 | 約 100KB/s | 約 50ms |
-| Github pages | 100GB まで無料超えたら追い出される(!) | 数 MB/s | 約 5ms |
-| Firebase hosting | 10GB まで無料以降従量制 | 数 MB/s | 約 5ms |
+| service          | price                                 | スループット | RTT     |
+| ---------------- | ------------------------------------- | ------------ | ------- |
+| Netlify          | 200GB まで無料以降従量制              | 約 100KB/s   | 約 50ms |
+| Github pages     | 100GB まで無料超えたら追い出される(!) | 数 MB/s      | 約 5ms  |
+| Firebase hosting | 10GB まで無料以降従量制               | 数 MB/s      | 約 5ms  |
 
 Firebase と Github pages で悩みましたが、下記の理由から今回は github pages を利用することにしました。
 

@@ -1,6 +1,6 @@
 ---
-title: "Developed a pairwise testing tool"
-date: "2019-10-23"
+title: 'Developed a pairwise testing tool'
+date: '2019-10-23'
 ---
 
 ## **Motivation**

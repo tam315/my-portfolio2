@@ -1,6 +1,6 @@
 ---
-title: "Effective TypeScriptを読了した"
-date: "2025-07-01"
+title: 'Effective TypeScriptを読了した'
+date: '2025-07-01'
 ---
 
 AIによりIT技術者が淘汰されるとか、プログラミング知識はもう役に立たないという言説もあるなか、「はいそうですか」となかば捨て台詞を吐きつつ読み進めていた[Effective TypeScript](https://blackwells.co.uk/bookshop/product/Effective-TypeScript-by-Dan-Vanderkam/9781492053743)をようやく読了した。

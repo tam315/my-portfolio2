@@ -1,6 +1,6 @@
 ---
-title: "Prettierをサクッと使ってみる"
-date: "2018-05-02"
+title: 'Prettierをサクッと使ってみる'
+date: '2018-05-02'
 ---
 
 絶賛シェア拡大中の人気コードフォーマッター「Prettier」に乗り換えてみました。
@@ -16,39 +16,39 @@ date: "2018-05-02"
 ### 手順
 
 1. 関連パッケージをインストール
-    
-    ```
-    yarn add prettier eslint-config-prettier eslint-plugin-prettier
-    ```
-    
+
+   ```
+   yarn add prettier eslint-config-prettier eslint-plugin-prettier
+   ```
+
 2. 設定ファイルをルートフォルダに作成
-    
-    .eslintrc.yml （例）
-    
-    ```yaml
-    extends: prettier
-    parser: babel-eslint
-    rules:
+
+   .eslintrc.yml （例）
+
+   ```yaml
+   extends: prettier
+   parser: babel-eslint
+   rules:
      prettier/prettier: error
-    plugins:
+   plugins:
      - prettier
-    ```
-    
-    .prettierrc.yml （例）
-    
-    ```yaml
-    trailingComma: all
-    singleQuote: true
-    ```
-    
+   ```
+
+   .prettierrc.yml （例）
+
+   ```yaml
+   trailingComma: all
+   singleQuote: true
+   ```
+
 3. お好みで npm script を作成します。下記の例では、`yarn prettier`を実行したときに、src フォルダ内の`(js|jsx|ts|tsx|css)`の拡張子を持つファイルを整形し、上書きします。
-    
-    ```
-    "scripts": {
-      "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css}\""
-    },
-    ```
-    
+
+   ```
+   "scripts": {
+     "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css}\""
+   },
+   ```
+
 4. お好みでエディタの機能拡張をインストールします。私は VSCode を使っているので、[VSCode 用の拡張機能](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)をインストールしました。`Ctrl + Shift + P`を押した後、`Format Document`(全体を成形)か`Format Code`（選択範囲を成形）を選べばエディタ上で整形が行われます。
 
 ## 所感

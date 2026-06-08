@@ -1,6 +1,6 @@
 ---
-title: "prismaのTypedSQLの凄さと課題"
-date: "2024-09-05"
+title: 'prismaのTypedSQLの凄さと課題'
+date: '2024-09-05'
 ---
 
 ## TypedSQLとは
@@ -68,7 +68,6 @@ DBサーバーをそこかしこで立ち上げておくのは、現実的では
 ただ、clientのgit管理はやめといてねと公式が言っているので、やはり素直に時が満ちるのを待ったほうが良さそう。
 
 > When using a custom `output` path for the generated Prisma Client, it is advised to exclude it from your version control. For Git, this means adding the `output` path to your `.gitignore` file.
-> 
 
 型情報の生成にリアルDBを使っているのならば、それを不要にするのはとても難しいチャレンジのように感じるが、そこは天才たちがなにか考えてくれるだろう🙏ナムナム
 

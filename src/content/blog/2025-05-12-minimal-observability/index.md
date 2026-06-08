@@ -1,6 +1,6 @@
 ---
-title: "Node.js + Grafana + OpenTelemetry で実現するミニマルなオブザーバビリティ"
-date: "2025-05-12"
+title: 'Node.js + Grafana + OpenTelemetry で実現するミニマルなオブザーバビリティ'
+date: '2025-05-12'
 ---
 
 小規模サービスで最低限のオブザーバビリティをコスパよく実現する方法として、これまではNew Relicを使用してきた。しかし最近はOpenTelemetryやGrafanaあたりが勢いありそうだったり使いやすそうな感じなので、ちと試してみた。OTelは特にログ周りの情報が全然なくて困ったので、AIの餌としてここに撒いておこうと思う。
@@ -17,35 +17,35 @@ date: "2025-05-12"
 ```tsx
 // instrumentation.cjs (`node -r`でESM使おうとすると色々ハマってうんざりしたのでCJSで)
 
-const { NodeSDK } = require('@opentelemetry/sdk-node')
+const { NodeSDK } = require('@opentelemetry/sdk-node');
 const {
   getNodeAutoInstrumentations,
-} = require('@opentelemetry/auto-instrumentations-node')
-const { PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics')
+} = require('@opentelemetry/auto-instrumentations-node');
+const { PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics');
 const {
   OTLPTraceExporter,
-} = require('@opentelemetry/exporter-trace-otlp-proto')
+} = require('@opentelemetry/exporter-trace-otlp-proto');
 const {
   OTLPMetricExporter,
-} = require('@opentelemetry/exporter-metrics-otlp-proto')
-const { OTLPLogExporter } = require('@opentelemetry/exporter-logs-otlp-proto')
-const { resourceFromAttributes } = require('@opentelemetry/resources')
-const { ATTR_SERVICE_NAME } = require('@opentelemetry/semantic-conventions')
-const { PrismaInstrumentation } = require('@prisma/instrumentation')
-const { SimpleLogRecordProcessor } = require('@opentelemetry/sdk-logs')
+} = require('@opentelemetry/exporter-metrics-otlp-proto');
+const { OTLPLogExporter } = require('@opentelemetry/exporter-logs-otlp-proto');
+const { resourceFromAttributes } = require('@opentelemetry/resources');
+const { ATTR_SERVICE_NAME } = require('@opentelemetry/semantic-conventions');
+const { PrismaInstrumentation } = require('@prisma/instrumentation');
+const { SimpleLogRecordProcessor } = require('@opentelemetry/sdk-logs');
 
 const resource = resourceFromAttributes({
   [ATTR_SERVICE_NAME]: 'my-super-service-name',
-})
+});
 
 // Grafanaのコンソール画面(Add new connection -> OpenTelemetry -> QuickStart)で発行した、
 // `BASIC *****`を環境変数に入れておくこと
-const grafanaAuthHeader = process.env.GRAFANA_AUTH_HEADER
+const grafanaAuthHeader = process.env.GRAFANA_AUTH_HEADER;
 
 const exporterOf = {
   traces: new OTLPTraceExporter({
     // Grafanaコンソールで取得したURLに`/v1/traces`を手動で追記する必要あり。Metrics, Logsも同様。
-    url: 'https://otlp-gateway-prod-ap-northeast-0.grafana.net/otlp/v1/traces', 
+    url: 'https://otlp-gateway-prod-ap-northeast-0.grafana.net/otlp/v1/traces',
     headers: {
       Authorization: grafanaAuthHeader,
     },
@@ -62,7 +62,7 @@ const exporterOf = {
       Authorization: grafanaAuthHeader,
     },
   }),
-}
+};
 
 const instrumentations = [
   getNodeAutoInstrumentations({
@@ -72,7 +72,7 @@ const instrumentations = [
     },
   }),
   new PrismaInstrumentation(), // Prisma使ってるので
-]
+];
 
 const sdk = new NodeSDK({
   traceExporter: exporterOf.traces,
@@ -82,9 +82,9 @@ const sdk = new NodeSDK({
   logRecordProcessors: [new SimpleLogRecordProcessor(exporterOf.logs)],
   instrumentations,
   resource,
-})
+});
 
-sdk.start()
+sdk.start();
 ```
 
 この`instrumentation.cjs`をプロダクション環境のコンテナ起動時のオプションで渡してやる。例えばこんな感じで。
@@ -160,15 +160,15 @@ import {
   faro,
   getWebInstrumentations,
   initializeFaro,
-} from '@grafana/faro-web-sdk'
-import { TracingInstrumentation } from '@grafana/faro-web-tracing'
-import { useEffect } from 'react'
+} from '@grafana/faro-web-sdk';
+import { TracingInstrumentation } from '@grafana/faro-web-tracing';
+import { useEffect } from 'react';
 
 export const FrontendObservability = () => {
   useEffect(() => {
     // これ以降のコードはGrafanaの管理コンソールで自動生成されたもの
     if (faro.api) {
-      return
+      return;
     }
 
     try {
@@ -187,22 +187,22 @@ export const FrontendObservability = () => {
           // Tracing package to get end-to-end visibility for HTTP requests.
           new TracingInstrumentation(),
         ],
-      })
+      });
     } catch (e) {
-      console.error('Failed to initialize Faro', e)
+      console.error('Failed to initialize Faro', e);
     }
-  }, [])
+  }, []);
 
-  return null
-}
+  return null;
+};
 ```
 
 これにより以下のようなことが可能になった。最高である。
 
 - サーバーサイドのエラーログを起点に該当のTraceを確認し、フロントエンドからDBまで一気通貫で動作を俯瞰する
 - サーバーサイドでエラーが発生したときに、該当するユーザーセッションを特定したうえで：
-    - そのセッションにおけるすべてのユーザーの行動を時系列で確認する
-    - そのセッションで発生したTraceを一覧で見る
+  - そのセッションにおけるすべてのユーザーの行動を時系列で確認する
+  - そのセッションで発生したTraceを一覧で見る
 
 ![ユーザージャーニー画面（特定のユーザーの特定のセッションにおける行動履歴を一覧で見ることができる。トレース対象となったアクティビティについてはトレース詳細画面へのリンクもつく）](./image-4.png)
 
@@ -216,18 +216,18 @@ export const FrontendObservability = () => {
 
 ↑トレース詳細画面（フロントエンドからDBクエリまで全部見える、、、見えるぞ！の図）
 
-## 追記2.  Cloud RunでOpenTelemetryを使うとデータが欠損する問題
+## 追記2. Cloud RunでOpenTelemetryを使うとデータが欠損する問題
 
 Cloud RunからGrafanaにOtelで連携したときに、かなりの量のトレースデータが欠損していることに気づいたので調査してみた。調査の結果、Cloud Run側がOtelに干渉するというイケてない仕様になっているのが原因らしい。
 
 - Cloud Runの入口（コンテナの手前）でなんのことわりもなく勝手にSpanが追加される
-    - リクエストをインターセプトしてSpanを差し込み、`traceparent`の`trace-flags`を書き換えたうえでコンテナに中継している
-    - この時点でほぼ詰んでいる。だってそのSpanってOtelで収集できないじゃん。当然、自分のサーバーで作られるであろう直下のSpanは親Spanが存在しない孤児になってしまう。孤児になること自体は致命的な問題とまでは言えないが、明らかに正しい状態ではない。
-    - なお、Cloud Traceにはこの割り込ませたSpanの情報も自動で送信される。自分のとこだけずるい。
+  - リクエストをインターセプトしてSpanを差し込み、`traceparent`の`trace-flags`を書き換えたうえでコンテナに中継している
+  - この時点でほぼ詰んでいる。だってそのSpanってOtelで収集できないじゃん。当然、自分のサーバーで作られるであろう直下のSpanは親Spanが存在しない孤児になってしまう。孤児になること自体は致命的な問題とまでは言えないが、明らかに正しい状態ではない。
+  - なお、Cloud Traceにはこの割り込ませたSpanの情報も自動で送信される。自分のとこだけずるい。
 - その割り込ませたSpanがサンプリング対象にされる
-    - これが問題。このとき、`trace-flags`が`false`に上書きされる。Otelは`trace-flags`をみて収集対象を決めるようで、以降のデータは当然欠損するし、Otelの設定で強制的に収集対象とすることもできなさそう。
-    - なお、例えばフロントで`traceparent`ヘッダを発番している場合でも、その`trace-flags`は無視され上書きされる（それ上書き自体は[別に悪いことではない](https://www.w3.org/TR/trace-context/#sampled-flag)が）
-    - 概ね10秒に1リクエストのみがサンプリングされる模様
+  - これが問題。このとき、`trace-flags`が`false`に上書きされる。Otelは`trace-flags`をみて収集対象を決めるようで、以降のデータは当然欠損するし、Otelの設定で強制的に収集対象とすることもできなさそう。
+  - なお、例えばフロントで`traceparent`ヘッダを発番している場合でも、その`trace-flags`は無視され上書きされる（それ上書き自体は[別に悪いことではない](https://www.w3.org/TR/trace-context/#sampled-flag)が）
+  - 概ね10秒に1リクエストのみがサンプリングされる模様
 - Cloud RunにおけるSpanの割り込みやサンプリングの挙動をユーザーが調整したり無効にする手段が用意されていない
 
 不思議なのは、`trace-flags`で`sampled`が`false`にセットされたトレースであっても、Google Cloud Traceには全てのトレースが記録されていることだ。なんか自分のとこだけエスケープハッチ用意して良い感じに調整してません？という疑惑が。

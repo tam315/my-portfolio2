@@ -1,6 +1,6 @@
 ---
-title: "react-helmetで構造化データを埋め込む"
-date: "2018-04-16"
+title: 'react-helmetで構造化データを埋め込む'
+date: '2018-04-16'
 ---
 
 ## 概要

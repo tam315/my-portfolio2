@@ -1,6 +1,6 @@
 ---
-title: "Clerkにおけるトークンの扱いが面白い"
-date: "2025-07-04"
+title: 'Clerkにおけるトークンの扱いが面白い'
+date: '2025-07-04'
 ---
 
 ClerkってStripeの認証バージョンみたいなもので、個人開発では活用必須なんだろうなーと思いながらも使ったことなかったのでドキュメントを斜め読みしていたところ、たまたま見つけた以下の公式ページの解説が面白かったのでペタリ。
@@ -40,7 +40,7 @@ Clerkではこれらの問題を解消するために、StatefulとStatelessの�
 - contains user data like user ID and other claims
 - is set to `SameSite=Lax`
 - You have to send Authorization header manually if the API domain is not the same with the frontend domain.
-    - [https://clerk.com/docs/backend-requests/making-requests](https://clerk.com/docs/backend-requests/making-requests)
+  - [https://clerk.com/docs/backend-requests/making-requests](https://clerk.com/docs/backend-requests/making-requests)
 
 さらにこれら一連の動作がサーバーサイドレンダリングとも調和するように、[`Handshake`](https://clerk.com/docs/how-clerk-works/overview#the-handshake)という仕組みも用意されているようだ。
 
