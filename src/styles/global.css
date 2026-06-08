@@ -1,6 +1,11 @@
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
 
+/*
+ * サイト全体で使うデザイントークンを定義する。
+ * Tailwind のテーマ変数として、色、フォント、文字サイズ、余白を管理する。
+ */
+
 @theme {
   /* Colors (dark mode defaults) */
   --color-surface: #16181e; /* 背景 */
@@ -14,7 +19,7 @@
   --color-glass-card-text: #f5f7fb;
   --color-glass-card-muted: rgba(245, 247, 251, 0.82);
 
-  /*  families */
+  /* Font families */
   --font-sans: 'IBM Plex Sans JP', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
 
@@ -31,7 +36,11 @@
   --spacing-gap-col: 16px;
 }
 
-/* Light mode overrides */
+/*
+ * ライトテーマ用に、ダークテーマ前提の色変数を上書きする。
+ * data-theme='light' が html に付いたときだけ適用される。
+ */
+
 html[data-theme='light'] {
   --color-surface: #eef0f6;
   --color-border: #cdd1de;
@@ -45,14 +54,16 @@ html[data-theme='light'] {
   --color-glass-card-muted: rgba(13, 16, 24, 0.72);
 }
 
-/* ロゴが見えなくなるので色調を反転 */
+/*
+ * ライトテーマ時にナビゲーションのロゴ画像を反転する。
+ * 暗色ロゴが背景に埋もれないようにするための見た目調整。
+ */
+
 html[data-theme='light'] nav img {
   filter: invert(1);
 }
 
-html {
-  overflow-y: scroll;
-}
+/* コードブロック配色を Catppuccin に */
 
 html[data-theme='dark'] .astro-code,
 html[data-theme='dark'] .astro-code span {
@@ -72,7 +83,10 @@ html[data-theme='light'] .astro-code span {
   text-decoration: var(--shiki-light-text-decoration);
 }
 
-/* Nav underline animation */
+/*
+ * ナビゲーションリンクの下線を定義する。
+ */
+
 .nav-underline::after {
   content: '';
   display: block;
@@ -87,6 +101,47 @@ html[data-theme='light'] .astro-code span {
   width: 100%;
 }
 
+/*
+ * ブログ本文内のリンクが長い URL でもはみ出さないようにする。
+ * 任意の位置で折り返せるようにして、モバイル表示の崩れを防ぐ。
+ */
+
 .blog-content :where(a) {
   overflow-wrap: anywhere;
+}
+
+/*
+ * ブログ本文の見出しに Markdown 風の記号を付ける共通装飾。
+ * 各見出しレベルの before 要素で色、フォント、余白をそろえる。
+ */
+
+.blog-content :where(h1, h2, h3, h4, h5, h6)::before {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-weight: 400;
+  margin-right: 0.5em;
+}
+
+.blog-content :where(h1)::before {
+  content: '#';
+}
+
+.blog-content :where(h2)::before {
+  content: '##';
+}
+
+.blog-content :where(h3)::before {
+  content: '###';
+}
+
+.blog-content :where(h4)::before {
+  content: '####';
+}
+
+.blog-content :where(h5)::before {
+  content: '#####';
+}
+
+.blog-content :where(h6)::before {
+  content: '######';
 }
