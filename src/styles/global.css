@@ -86,3 +86,7 @@ html[data-theme='light'] .astro-code span {
 .nav-underline.active::after {
   width: 100%;
 }
+
+.blog-content :where(a) {
+  overflow-wrap: anywhere;
+}
