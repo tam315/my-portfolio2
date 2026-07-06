@@ -1,6 +1,7 @@
 // @ts-check
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 
 import react from '@astrojs/react';
 
@@ -13,6 +14,14 @@ export default defineConfig({
   integrations: [react(), sitemap()],
 
   markdown: {
+    processor: unified({
+      rehypePlugins: [
+        [
+          rehypeExternalLinks,
+          { target: '_blank', rel: ['noopener', 'noreferrer'] },
+        ],
+      ],
+    }),
     shikiConfig: {
       themes: {
         light: 'catppuccin-latte',
@@ -20,12 +29,6 @@ export default defineConfig({
       },
       defaultColor: false,
     },
-    rehypePlugins: [
-      [
-        rehypeExternalLinks,
-        { target: '_blank', rel: ['noopener', 'noreferrer'] },
-      ],
-    ],
   },
 
   image: {
