@@ -27,9 +27,10 @@
     "tailwindcss": "^4.3.1"
   },
   "engines": {
-    "node": "24.18.0"
+    "node": "24.19.0"
   },
-  "overrides": {
-    "@babel/core": "7.29.7"
+  "allowScripts": {
+    "esbuild": false,
+    "fsevents": false
   }
 }
