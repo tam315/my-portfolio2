@@ -1,16 +1,16 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import { getCollection } from 'astro:content'
-import profileImage from '../assets/profile.jpg'
-import caseGoodmenu from '../assets/case-goodmenu.png'
-import caseRci from '../assets/case-rci.png'
-import casePairwise from '../assets/case-pairwise.jpg'
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import profileImage from '../assets/profile.jpg';
+import caseGoodmenu from '../assets/case-goodmenu.png';
+import caseRci from '../assets/case-rci.png';
+import casePairwise from '../assets/case-pairwise.jpg';
 
 const posts = (await getCollection('blog'))
   .sort(
     (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
   )
-  .slice(0, 5)
+  .slice(0, 5);
 
 const profileItems = [
   'ソフトウェアエンジニア',
@@ -21,7 +21,7 @@ const profileItems = [
   'FP2級',
   'アマチュア無線3級',
   '島根県浜田市',
-]
+];
 
 const services = [
   {
@@ -52,19 +52,15 @@ const services = [
     titleClass: 'tracking-wide',
     fallback: 'from-[#1e5e57] to-[#2fb6a8]',
   },
-]
+];
 ---
 
 <Layout title="Shota Tamura">
   <main class="max-w-3xl mx-auto px-8 pb-20">
     <!-- HERO -->
     <section class="pt-16 pb-12 sm:pt-20 sm:pb-14">
-      <div
-        class="flex flex-col items-center text-center sm:flex-row sm:items-center sm:gap-12 sm:text-left"
-      >
-        <figure
-          class="relative size-32 shrink-0 overflow-hidden rounded-full border border-border bg-border/30 shadow-[0_10px_24px_rgba(0,0,0,0.18)] sm:size-48"
-        >
+      <div class="flex flex-col items-center text-center sm:flex-row sm:items-center sm:gap-12 sm:text-left">
+        <figure class="relative size-32 shrink-0 overflow-hidden rounded-full border border-border bg-border/30 shadow-[0_10px_24px_rgba(0,0,0,0.18)] sm:size-48">
           <img
             src={profileImage.src}
             alt="作業風景のプロフィール写真"
@@ -76,33 +72,26 @@ const services = [
           />
         </figure>
         <div class="min-w-0">
-          <h1
-            class="mt-[30px] font-sans text-[clamp(34px,5vw,54px)] font-semibold leading-[1.08] text-strong sm:mt-0"
-          >
-            Shota<br />Tamura
+          <h1 class="mt-[30px] font-sans text-[clamp(34px,5vw,54px)] font-semibold leading-[1.08] text-strong sm:mt-0">
+            Shota
+            <br />
+            Tamura
           </h1>
-          <div
-            class="mx-auto mt-[18px] h-[3px] w-10 rounded-full bg-accent sm:mx-0 sm:mt-[22px] sm:w-[46px]"
-          >
-          </div>
-          <p
-            class="mx-auto mt-[18px] flex max-w-[30ch] flex-wrap items-center justify-center gap-y-0.5 text-small leading-[1.6] text-muted sm:mx-0 sm:mt-[22px] sm:max-w-[40ch] sm:justify-start sm:text-[15.5px] sm:leading-[1.7]"
-          >
-            {
-              profileItems.map((item, index) => (
-                <span class="inline-flex items-center whitespace-nowrap">
-                  {item}
-                  {index < profileItems.length - 1 && (
-                    <span
-                      class="inline-flex px-[0.45em] text-accent"
-                      aria-hidden="true"
-                    >
-                      /
-                    </span>
-                  )}
-                </span>
-              ))
-            }
+          <div class="mx-auto mt-[18px] h-[3px] w-10 rounded-full bg-accent sm:mx-0 sm:mt-[22px] sm:w-[46px]"></div>
+          <p class="mx-auto mt-[18px] flex max-w-[30ch] flex-wrap items-center justify-center gap-y-0.5 text-small leading-[1.6] text-muted sm:mx-0 sm:mt-[22px] sm:max-w-[40ch] sm:justify-start sm:text-[15.5px] sm:leading-[1.7]">
+            {profileItems.map((item, index) => (
+              <span class="inline-flex items-center whitespace-nowrap">
+                {item}
+                {index < profileItems.length - 1 && (
+                  <span
+                    class="inline-flex px-[0.45em] text-accent"
+                    aria-hidden="true"
+                  >
+                    /
+                  </span>
+                )}
+              </span>
+            ))}
           </p>
         </div>
       </div>
@@ -110,125 +99,116 @@ const services = [
 
     <!-- 事業内容 -->
     <section class="pt-8 pb-8">
-      <h2
-        class="font-mono text-[18px] uppercase tracking-widest text-accent mb-5"
-      >
+      <h2 class="font-mono text-[18px] uppercase tracking-widest text-accent mb-5">
         事業内容
       </h2>
       <p class="text-ui text-content leading-relaxed">
-        システム開発、Webサイト制作、技術相談などを行っています。「こんなものを作りたい」を形にします。お気軽に<a
+        システム開発、Webサイト制作、技術相談などを行っています。「こんなものを作りたい」を形にします。お気軽に
+        <a
           href="/contact"
-          class="underline underline-offset-4 decoration-muted">お問い合わせ</a
-        >ください。
+          class="underline underline-offset-4 decoration-muted"
+        >
+          お問い合わせ
+        </a>
+        ください。
       </p>
     </section>
 
     <!-- 自社サービス -->
     <section class="pt-8 pb-8">
-      <h2
-        class="font-mono text-[18px] uppercase tracking-widest text-accent mb-5"
-      >
+      <h2 class="font-mono text-[18px] uppercase tracking-widest text-accent mb-5">
         自社サービス等
       </h2>
       <div class="grid grid-cols-1 gap-7 sm:grid-cols-3">
-        {
-          services.map((service) => (
-            <a
-              href={service.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="block no-underline shadow-[0_4px_14px_rgba(0,0,0,0.22)] transition-shadow duration-150 hover:shadow-[0_10px_24px_rgba(0,0,0,0.34)]"
+        {services.map((service) => (
+          <a
+            href={service.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block no-underline shadow-[0_4px_14px_rgba(0,0,0,0.22)] transition-shadow duration-150 hover:shadow-[0_10px_24px_rgba(0,0,0,0.34)]"
+          >
+            <figure
+              class:list={[
+                'relative m-0 aspect-video h-full overflow-hidden bg-linear-to-br sm:aspect-square',
+                service.fallback,
+              ]}
             >
-              <figure
-                class:list={[
-                  'relative m-0 aspect-video h-full overflow-hidden bg-linear-to-br sm:aspect-square',
-                  service.fallback,
-                ]}
-              >
-                <img
-                  src={service.image.src}
-                  alt={service.imageAlt}
-                  width={service.image.width}
-                  height={service.image.height}
-                  loading="lazy"
-                  decoding="async"
-                  class="absolute inset-0 h-full w-full object-cover"
-                />
-                <figcaption class="absolute bottom-0 left-0 right-0 z-10 m-0 bg-[var(--color-glass-card)] px-4 py-3 text-[var(--color-glass-card-text)] backdrop-blur-md">
-                  <span
-                    class:list={[
-                      'block text-[16px] font-semibold leading-snug',
-                      service.titleClass,
-                    ]}
-                  >
-                    {service.title}
-                  </span>
-                  <span class="mt-2 block text-[13px] leading-[1.55] text-[var(--color-glass-card-muted)]">
-                    {service.description}
-                  </span>
-                </figcaption>
-              </figure>
-            </a>
-          ))
-        }
+              <img
+                src={service.image.src}
+                alt={service.imageAlt}
+                width={service.image.width}
+                height={service.image.height}
+                loading="lazy"
+                decoding="async"
+                class="absolute inset-0 h-full w-full object-cover"
+              />
+              <figcaption class="absolute bottom-0 left-0 right-0 z-10 m-0 bg-[var(--color-glass-card)] px-4 py-3 text-[var(--color-glass-card-text)] backdrop-blur-md">
+                <span
+                  class:list={[
+                    'block text-[16px] font-semibold leading-snug',
+                    service.titleClass,
+                  ]}
+                >
+                  {service.title}
+                </span>
+                <span class="mt-2 block text-[13px] leading-[1.55] text-[var(--color-glass-card-muted)]">
+                  {service.description}
+                </span>
+              </figcaption>
+            </figure>
+          </a>
+        ))}
       </div>
     </section>
 
     <!-- 経歴 -->
     <section class="pt-8 pb-8">
-      <h2
-        class="font-mono text-[18px] uppercase tracking-widest text-accent mb-5"
-      >
+      <h2 class="font-mono text-[18px] uppercase tracking-widest text-accent mb-5">
         経歴
       </h2>
       <div class="flex flex-col gap-3">
-        <div
-          class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[180px_1fr] sm:gap-x-gap-col sm:items-baseline"
-        >
-          <span class="font-mono text-small text-muted tracking-wide"
-            >2008.04 to 2017.03</span
-          >
-          <span class="text-ui text-content"
-            >公務員として地方自治体のIT管理者</span
-          >
-        </div>
-
-        <div
-          class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[180px_1fr] sm:gap-x-gap-col sm:items-baseline"
-        >
-          <span class="font-mono text-small text-muted tracking-wide"
-            >2018.12 to 2020.06</span
-          >
-          <span class="text-ui text-content"
-            >株式会社Deepworkにてフルスタックエンジニア（業務委託契約）</span
-          >
-        </div>
-
-        <div
-          class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[180px_1fr] sm:gap-x-gap-col sm:items-baseline"
-        >
-          <span class="font-mono text-small text-muted tracking-wide"
-            >2021.08 to 2024.08</span
-          >
-          <span class="text-ui text-content"
-            >株式会社カミナシにてフロントエンドエンジニア（業務委託契約）</span
-          >
-        </div>
-
-        <div
-          class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[180px_1fr] sm:gap-x-gap-col sm:items-baseline"
-        >
-          <span class="font-mono text-small text-muted tracking-wide"
-            >2020.07 to now</span
-          >
+        <div class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[180px_1fr] sm:gap-x-gap-col sm:items-baseline">
+          <span class="font-mono text-small text-muted tracking-wide">
+            2008.04 to 2017.03
+          </span>
           <span class="text-ui text-content">
-            自社サービスである <a
+            公務員として地方自治体のIT管理者
+          </span>
+        </div>
+
+        <div class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[180px_1fr] sm:gap-x-gap-col sm:items-baseline">
+          <span class="font-mono text-small text-muted tracking-wide">
+            2018.12 to 2020.06
+          </span>
+          <span class="text-ui text-content">
+            株式会社Deepworkにてフルスタックエンジニア（業務委託契約）
+          </span>
+        </div>
+
+        <div class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[180px_1fr] sm:gap-x-gap-col sm:items-baseline">
+          <span class="font-mono text-small text-muted tracking-wide">
+            2021.08 to 2024.08
+          </span>
+          <span class="text-ui text-content">
+            株式会社カミナシにてフロントエンドエンジニア（業務委託契約）
+          </span>
+        </div>
+
+        <div class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[180px_1fr] sm:gap-x-gap-col sm:items-baseline">
+          <span class="font-mono text-small text-muted tracking-wide">
+            2020.07 to now
+          </span>
+          <span class="text-ui text-content">
+            自社サービスである{' '}
+            <a
               href="https://goodmenu.io/"
               target="_blank"
               rel="noopener noreferrer"
               class="text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors"
-              >Goodmenu.io</a
-            > という飲食店向けSaaSの開発運営ほか、各種の受託開発
+            >
+              Goodmenu.io
+            </a>{' '}
+            という飲食店向けSaaSの開発運営ほか、各種の受託開発
           </span>
         </div>
       </div>
@@ -236,100 +216,91 @@ const services = [
 
     <!-- 連絡先 -->
     <section class="pt-8 pb-8">
-      <h2
-        class="font-mono text-[18px] uppercase tracking-widest text-accent mb-5"
-      >
+      <h2 class="font-mono text-[18px] uppercase tracking-widest text-accent mb-5">
         連絡先
       </h2>
       <div class="flex flex-col gap-4">
-        <div
-          class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[160px_1fr] sm:gap-x-gap-col sm:items-baseline"
-        >
-          <span class="font-mono text-small text-muted tracking-wide"
-            >問い合わせフォーム</span
-          >
+        <div class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[160px_1fr] sm:gap-x-gap-col sm:items-baseline">
+          <span class="font-mono text-small text-muted tracking-wide">
+            問い合わせフォーム
+          </span>
           <a
             href="/contact"
             class="text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors"
-            >お問い合わせはこちらをクリック</a
           >
+            お問い合わせはこちらをクリック
+          </a>
         </div>
 
-        <div
-          class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[160px_1fr] sm:gap-x-gap-col sm:items-baseline"
-        >
-          <span class="font-mono text-small text-muted tracking-wide"
-            >Email</span
-          >
+        <div class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[160px_1fr] sm:gap-x-gap-col sm:items-baseline">
+          <span class="font-mono text-small text-muted tracking-wide">
+            Email
+          </span>
           <a
             href="mailto:info@yuuniworks.com"
             class="text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors"
-            >info@yuuniworks.com</a
           >
+            info@yuuniworks.com
+          </a>
         </div>
 
-        <div
-          class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[160px_1fr] sm:gap-x-gap-col sm:items-baseline"
-        >
-          <span class="font-mono text-small text-muted tracking-wide"
-            >GitHub</span
-          >
+        <div class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[160px_1fr] sm:gap-x-gap-col sm:items-baseline">
+          <span class="font-mono text-small text-muted tracking-wide">
+            GitHub
+          </span>
           <a
             href="https://github.com/tam315"
             target="_blank"
             rel="noopener noreferrer"
             class="text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors"
-            >tam315</a
           >
+            tam315
+          </a>
         </div>
 
-        <div
-          class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[160px_1fr] sm:gap-x-gap-col sm:items-baseline"
-        >
-          <span class="font-mono text-small text-muted tracking-wide"
-            >インボイス登録番号</span
-          >
+        <div class="flex flex-col gap-0.5 sm:grid sm:grid-cols-[160px_1fr] sm:gap-x-gap-col sm:items-baseline">
+          <span class="font-mono text-small text-muted tracking-wide">
+            インボイス登録番号
+          </span>
           <a
             href="https://www.invoice-kohyo.nta.go.jp/regno-search/detail?selRegNo=6810092734887"
             target="_blank"
             rel="noopener noreferrer"
             class="font-mono text-content underline underline-offset-4 decoration-muted hover:text-accent transition-colors"
-            >T6810092734887</a
           >
+            T6810092734887
+          </a>
         </div>
       </div>
     </section>
 
     <!-- ブログ -->
     <section class="pt-8 pb-8" id="blog">
-      <h2
-        class="font-mono text-[18px] uppercase tracking-widest text-accent mb-5"
-      >
+      <h2 class="font-mono text-[18px] uppercase tracking-widest text-accent mb-5">
         ブログ
       </h2>
       <div class="divide-y divide-border">
-        {
-          posts.map((post) => (
-            <a
-              href={`/blog/${post.id}`}
-              class="group flex flex-col gap-0.5 sm:flex-row sm:justify-between sm:items-baseline py-3"
-            >
-              <span class="text-ui text-content group-hover:text-accent transition-colors leading-relaxed flex-1">
-                {post.data.title}
-              </span>
-              <span class="font-mono text-small text-muted whitespace-nowrap order-first sm:order-last shrink-0">
-                {post.data.date}
-              </span>
-            </a>
-          ))
-        }
+        {posts.map((post) => (
+          <a
+            href={`/blog/${post.id}`}
+            class="group flex flex-col gap-0.5 sm:flex-row sm:justify-between sm:items-baseline py-3"
+          >
+            <span class="text-ui text-content group-hover:text-accent transition-colors leading-relaxed flex-1">
+              {post.data.title}
+            </span>
+            <span class="font-mono text-small text-muted whitespace-nowrap order-first sm:order-last shrink-0">
+              {post.data.date}
+            </span>
+          </a>
+        ))}
       </div>
       <div class="mt-4">
         <a
           href="/blog"
           class="font-mono text-small text-muted hover:text-accent transition-colors"
-          >すべて見る →</a
         >
+          すべて見る →
+        </a>
       </div>
     </section>
   </main>
