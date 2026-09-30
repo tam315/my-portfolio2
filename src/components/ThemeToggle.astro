@@ -16,23 +16,15 @@
     stroke-linecap="round"
     stroke-linejoin="round"
   >
-    <circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="6"
-    ></line><line x1="12" y1="18" x2="12" y2="22"></line>
-    <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line
-      x1="16.24"
-      y1="16.24"
-      x2="19.07"
-      y2="19.07"></line>
-    <line x1="2" y1="12" x2="6" y2="12"></line><line
-      x1="18"
-      y1="12"
-      x2="22"
-      y2="12"></line>
-    <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line
-      x1="16.24"
-      y1="7.76"
-      x2="19.07"
-      y2="4.93"></line>
+    <circle cx="12" cy="12" r="4"></circle>
+    <line x1="12" y1="2" x2="12" y2="6"></line>
+    <line x1="12" y1="18" x2="12" y2="22"></line>
+    <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+    <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+    <line x1="2" y1="12" x2="6" y2="12"></line>
+    <line x1="18" y1="12" x2="22" y2="12"></line>
+    <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
+    <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
   </svg>
   <!-- Moon icon (shown in light mode → click to go dark) -->
   <svg
@@ -56,21 +48,21 @@
   function syncIcons(theme: string) {
     document
       .getElementById('icon-sun')
-      ?.classList.toggle('hidden', theme === 'dark')
+      ?.classList.toggle('hidden', theme === 'dark');
     document
       .getElementById('icon-moon')
-      ?.classList.toggle('hidden', theme === 'light')
+      ?.classList.toggle('hidden', theme === 'light');
   }
 
-  syncIcons(document.documentElement.getAttribute('data-theme')!)
+  syncIcons(document.documentElement.getAttribute('data-theme')!);
 
   document.getElementById('theme-toggle')?.addEventListener('click', () => {
     const next =
       document.documentElement.getAttribute('data-theme') === 'dark'
         ? 'light'
-        : 'dark'
-    localStorage.setItem('theme', next)
-    document.documentElement.setAttribute('data-theme', next)
-    syncIcons(next)
-  })
+        : 'dark';
+    localStorage.setItem('theme', next);
+    document.documentElement.setAttribute('data-theme', next);
+    syncIcons(next);
+  });
 </script>

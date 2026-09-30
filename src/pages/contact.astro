@@ -1,11 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro'
+import Layout from '../layouts/Layout.astro';
 
 const inquiryTypes = [
   '業務やプロジェクトを依頼したい',
   '質問・アドバイスがほしい',
   'その他',
-]
+];
 
 const budgetOptions = [
   '10万円未満',
@@ -13,12 +13,12 @@ const budgetOptions = [
   '100万円〜500万円',
   '500万円以上',
   '未定・要相談',
-]
+];
 
 const inputClass =
-  'w-full rounded-none border border-border bg-transparent px-4 py-3 text-ui text-content outline-none transition-colors placeholder:text-muted focus:border-accent'
+  'w-full rounded-none border border-border bg-transparent px-4 py-3 text-ui text-content outline-none transition-colors placeholder:text-muted focus:border-accent';
 const radioLabelClass =
-  'flex items-center gap-3 px-3 py-1.5 text-ui text-content transition-colors has-checked:bg-accent/10 has-checked:text-strong'
+  'flex items-center gap-3 px-3 py-1.5 text-ui text-content transition-colors has-checked:bg-accent/10 has-checked:text-strong';
 ---
 
 <Layout
@@ -27,9 +27,7 @@ const radioLabelClass =
 >
   <main class="max-w-3xl mx-auto px-8 pb-20">
     <section class="pt-14 pb-10">
-      <h1
-        class="font-mono text-[18px] uppercase tracking-widest text-accent mb-5"
-      >
+      <h1 class="font-mono text-[18px] uppercase tracking-widest text-accent mb-5">
         お問い合わせ
       </h1>
       <p class="text-ui text-content leading-relaxed">
@@ -43,9 +41,9 @@ const radioLabelClass =
       class="flex flex-col gap-8"
     >
       <div class="flex flex-col gap-2">
-        <label for="email" class="text-ui text-content"
-          >メールアドレス <span class="text-accent">*</span></label
-        >
+        <label for="email" class="text-ui text-content">
+          メールアドレス <span class="text-accent">*</span>
+        </label>
         <input
           id="email"
           type="email"
@@ -58,61 +56,57 @@ const radioLabelClass =
       </div>
 
       <div class="flex flex-col gap-2">
-        <label for="message" class="text-ui text-content"
-          >具体的なご相談内容・プロジェクトの概要 <span class="text-accent"
-            >*</span
-          ></label
-        >
+        <label for="message" class="text-ui text-content">
+          具体的なご相談内容・プロジェクトの概要{' '}
+          <span class="text-accent">*</span>
+        </label>
         <textarea
           id="message"
           name="具体的なご相談内容・プロジェクトの概要"
           rows="8"
           required
-          class={inputClass}></textarea>
+          class={inputClass}
+        ></textarea>
       </div>
 
       <fieldset class="flex flex-col gap-3">
         <legend class="text-ui text-content mb-1">お問い合わせ種別</legend>
         <div class="flex flex-col gap-1">
-          {
-            inquiryTypes.map((type) => (
-              <label class={radioLabelClass}>
-                <input
-                  type="radio"
-                  name="お問い合わせ種別"
-                  value={type}
-                  class="size-4 accent-accent"
-                />
-                <span>{type}</span>
-              </label>
-            ))
-          }
+          {inquiryTypes.map((type) => (
+            <label class={radioLabelClass}>
+              <input
+                type="radio"
+                name="お問い合わせ種別"
+                value={type}
+                class="size-4 accent-accent"
+              />
+              <span>{type}</span>
+            </label>
+          ))}
         </div>
       </fieldset>
 
       <fieldset class="flex flex-col gap-3">
         <legend class="text-ui text-content mb-1">ご予算の目安</legend>
         <div class="flex flex-col gap-1">
-          {
-            budgetOptions.map((budget) => (
-              <label class={radioLabelClass}>
-                <input
-                  type="radio"
-                  name="ご予算の目安"
-                  value={budget}
-                  class="size-4 accent-accent"
-                />
-                <span>{budget}</span>
-              </label>
-            ))
-          }
+          {budgetOptions.map((budget) => (
+            <label class={radioLabelClass}>
+              <input
+                type="radio"
+                name="ご予算の目安"
+                value={budget}
+                class="size-4 accent-accent"
+              />
+              <span>{budget}</span>
+            </label>
+          ))}
         </div>
       </fieldset>
 
       <div class="flex flex-col gap-2">
-        <label for="organization" class="text-ui text-content"
-          >貴社名・団体名（個人の場合は「個人」とご記入ください）</label
-        >
+        <label for="organization" class="text-ui text-content">
+          貴社名・団体名（個人の場合は「個人」とご記入ください）
+        </label>
         <input
           id="organization"
           type="text"
@@ -123,7 +117,9 @@ const radioLabelClass =
       </div>
 
       <div class="flex flex-col gap-2">
-        <label for="name" class="text-ui text-content">ご担当者様名</label>
+        <label for="name" class="text-ui text-content">
+          ご担当者様名
+        </label>
         <input
           id="name"
           type="text"
@@ -135,7 +131,9 @@ const radioLabelClass =
       </div>
 
       <div class="flex flex-col gap-2">
-        <label for="tel" class="text-ui text-content">電話番号</label>
+        <label for="tel" class="text-ui text-content">
+          電話番号
+        </label>
         <input
           id="tel"
           type="tel"
